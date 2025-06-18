@@ -1,3 +1,6 @@
+using MomonaApi.Model;
+using Microsoft.EntityFrameworkCore;
+using MomonaApi.DAL;
 var builder = WebApplication.CreateBuilder(args);
 
 // Registrer nødvendige tjenester
@@ -14,6 +17,12 @@ builder.Services.AddCors(options =>
               .AllowAnyHeader());
 });
 
+
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlite("Data Source=menu.db"));
+
+
 var app = builder.Build();
 
 // Bruk Swagger i utviklingsmiljø
@@ -25,6 +34,23 @@ if (app.Environment.IsDevelopment())
 
 // Aktiver CORS før kontrollerendepunkter
 app.UseCors("AllowFrontend");
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.EnsureCreated();
+
+    if (!db.MenuItems.Any())
+    {
+        db.MenuItems.AddRange(
+            new MenuItem { Name = "Pizza", Price = 129 },
+            new MenuItem { Name = "Burger", Price = 99 },
+            new MenuItem { Name = "Pasta", Price = 115 }
+        );
+        db.SaveChanges();
+    }
+}
+
 
 app.UseHttpsRedirection();
 

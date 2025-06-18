@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MomonaApi.Model;
+using MomonaApi.DAL; // hvis AppDbContext ligger i DAL
 
 namespace MomonaApi.Controllers
 {
@@ -7,17 +8,17 @@ namespace MomonaApi.Controllers
     [Route("api/[controller]")]
     public class MenuItemsController : ControllerBase
     {
+        private readonly AppDbContext _context;
+
+        public MenuItemsController(AppDbContext context)
+        {
+            _context = context;
+        }
+
         [HttpGet]
         public ActionResult<IEnumerable<MenuItem>> Get()
         {
-            var items = new List<MenuItem>
-            {
-                new MenuItem { Id = 1, Name = "Pizza", Price = 129 },
-                new MenuItem { Id = 2, Name = "Burger", Price = 99 },
-                new MenuItem { Id = 3, Name = "Pasta", Price = 115 }
-            };
-
-            return Ok(items);
+            return Ok(_context.MenuItems.ToList());
         }
     }
 }
