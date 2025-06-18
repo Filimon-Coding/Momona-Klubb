@@ -13,6 +13,7 @@ export default function Menu() {
       .catch(error => console.error("Feil ved henting:", error));
   }, []);
   
+  
   return (
     <div style={{ padding: "20px" }}>
       <h2>Meny</h2>
