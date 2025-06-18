@@ -15,9 +15,28 @@ export default function User() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Sending data to backend:', formData);
-    // TODO: Send til backend senere
+  
+    fetch("http://localhost:5272/api/user", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then(response => {
+        if (response.ok) {
+          alert("Bruker registrert!");
+          setFormData({ firstName: "", lastName: "", email: "", phone: "" });
+        } else {
+          alert("Noe gikk galt under innsending");
+        }
+      })
+      .catch(error => {
+        console.error("Feil ved innsending:", error);
+        alert("Serverfeil");
+      });
   };
+  
 
   return (
     <div style={{ padding: "20px" }}>
