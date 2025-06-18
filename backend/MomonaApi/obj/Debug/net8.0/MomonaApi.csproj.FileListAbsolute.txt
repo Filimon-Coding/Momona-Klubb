@@ -31,3 +31,4 @@
 /home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/Backend/MomonaApi/obj/Debug/net8.0/MomonaApi.pdb
 /home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/Backend/MomonaApi/obj/Debug/net8.0/MomonaApi.genruntimeconfig.cache
 /home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/Backend/MomonaApi/obj/Debug/net8.0/ref/MomonaApi.dll
+/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/obj/Debug/net8.0/MomonaApi.sourcelink.json
