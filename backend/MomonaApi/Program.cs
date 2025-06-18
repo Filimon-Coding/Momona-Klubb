@@ -1,39 +1,43 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Legg til tjenester før app bygges
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+// Registrer nødvendige tjenester
+builder.Services.AddEndpointsApiExplorer();       // Swagger support
+builder.Services.AddSwaggerGen();                 // Swagger UI
+builder.Services.AddControllers();                // Aktiver API-kontrollere
 
-// CORS-policy for frontend
+// CORS-policy for React frontend
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFrontend",
-        policy => policy
-            .WithOrigins("http://localhost:3000") // React frontend
-            .AllowAnyMethod()
-            .AllowAnyHeader());
+    options.AddPolicy("AllowFrontend", policy =>
+        policy.WithOrigins("http://localhost:3000")
+              .AllowAnyMethod()
+              .AllowAnyHeader());
 });
 
 var app = builder.Build();
 
-// Middleware
+// Bruk Swagger i utviklingsmiljø
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseCors("AllowFrontend");  // Bruk CORS før endpoints
+// Aktiver CORS før kontrollerendepunkter
+app.UseCors("AllowFrontend");
+
 app.UseHttpsRedirection();
 
-// Dummydatasett
+// ✅ Aktiver kontrollerbaserte endepunkter som /api/menuitems
+app.MapControllers();
+
+// Dummy test-endepunkt (kan beholdes for værdata)
 var summaries = new[]
 {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild",
     "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
 
-// Endpoint
 app.MapGet("/weatherforecast", () =>
 {
     var forecast = Enumerable.Range(1, 5).Select(index =>
@@ -50,9 +54,10 @@ app.MapGet("/weatherforecast", () =>
 .WithName("GetWeatherForecast")
 .WithOpenApi();
 
+// Start applikasjonen
 app.Run();
 
-// Record for data
+// Record-type for værdata
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
