@@ -1,26 +1,22 @@
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-
-import Menu from './pages/menu';
-import User from './pages/user';
-import Test from './pages/test'; 
-
+import GlobalStyle from './GlobalStyle'; // <-- import it here
+import MainPage from './pages/test';
+import MenuPage from './pages/menu';
+import AboutPage from './pages/about';
+import ContactPage from './pages/contact';
+import UserPage from './pages/user';
 
 function App() {
   return (
     <Router>
-      <nav style={{ padding: '10px', backgroundColor: '#f0f0f0' }}>
-  <Link to="/menu" style={{ marginRight: '15px' }}>Menu</Link>
-  <Link to="/user" style={{ marginRight: '15px' }}>User</Link>
-  <Link to="/test">Test</Link>
-</nav>
-
-
+      <GlobalStyle /> {/* <-- apply global styles */}
       <Routes>
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/user" element={<User />} />
-        <Route path="/test" element={<Test />} />
-        {/* legg til flere routes her etter behov */}
+        <Route path="/" element={<MainPage />} />
+        <Route path="/menu" element={<MenuPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/user" element={<UserPage />} />
       </Routes>
     </Router>
   );

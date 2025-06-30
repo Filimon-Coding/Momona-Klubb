@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Header from './header'; 
 
 const HeaderBar = styled.div`
   background: rgba(0, 0, 0, 0.4);
@@ -37,7 +36,7 @@ const DropdownMenu = styled.div`
   position: absolute;
   top: 60px;
   right: 30px;
-  background: rgba(20, 20, 20, 0.95); /* Dark + slight transparency */
+  background: rgba(20, 20, 20, 0.95);
   color: white;
   border-radius: 10px;
   padding: 10px 0;
@@ -59,7 +58,6 @@ const DropdownMenu = styled.div`
   }
 `;
 
-
 const HeroSection = styled.section`
   background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1950&q=80');
   background-size: cover;
@@ -75,36 +73,28 @@ const HeroSection = styled.section`
   text-align: center;
 `;
 
-const HeroTitle = styled.h1`
-  font-size: 3.5rem;
-  margin-bottom: 30px;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+const SectionContent = styled.div`
+  max-width: 800px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 40px;
+  border-radius: 10px;
 `;
 
-const FloatingButton = styled.a<{ top: string; left: string; shape?: 'circle' | 'square' }>`
-  position: absolute;
-  top: ${props => props.top};
-  left: ${props => props.left};
-  width: ${props => props.shape === 'square' ? '120px' : '100px'};
-  height: ${props => props.shape === 'square' ? '120px' : '100px'};
-  border-radius: ${props => props.shape === 'square' ? '10px' : '50%'};
-  background: rgba(255, 255, 255, 0.2);
-  border: 2px solid white;
-  color: white;
-  text-align: center;
-  line-height: ${props => props.shape === 'square' ? '120px' : '100px'};
-  text-decoration: none;
-  font-weight: bold;
-  backdrop-filter: blur(4px);
-  transition: 0.3s ease;
-
-  &:hover {
-    background: white;
-    color: black;
-  }
+const Title = styled.h1`
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #fff1d6;
 `;
 
-const MainPage = () => {
+const Text = styled.p`
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #f0e6d6;
+  margin-bottom: 20px;
+`;
+
+const AboutPage = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
@@ -132,15 +122,21 @@ const MainPage = () => {
       )}
 
       <HeroSection>
-        <HeroTitle>Welcome to Momona Klubb</HeroTitle>
-        <FloatingButton href="/menu" top="25%" left="10%">Menu</FloatingButton>
-        <FloatingButton href="/availability" top="50%" left="5%">Check</FloatingButton>
-        <FloatingButton href="/events" top="65%" left="40%" shape="square">Events</FloatingButton>
-        <FloatingButton href="/about" top="30%" left="75%">About</FloatingButton>
-        <FloatingButton href="/contact" top="70%" left="80%" shape="square">Contact</FloatingButton>
+        <SectionContent>
+          <Title>About Momona Klubb</Title>
+          <Text>
+            Momona Klubb is a vibrant social space designed for our community to gather, relax, and enjoy.
+          </Text>
+          <Text>
+            We take pride in our cozy atmosphere, culturally inspired meals, and warm hospitality.
+          </Text>
+          <Text>
+            Stay tuned for upcoming events and feel free to reach out for bookings or collaboration!
+          </Text>
+        </SectionContent>
       </HeroSection>
     </>
   );
 };
 
-export default MainPage;
+export default AboutPage;
