@@ -1,13 +1,59 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Header from '../components/header/header';
+import Footer from '../components/footer/footer';
 
-const Wrapper = styled.div`
-  padding: 60px 20px;
+const HeroSection = styled.section`
+  background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1950&q=80');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  padding-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const FormCard = styled.div`
+  background: rgba(0, 0, 0, 0.55);
+  padding: 40px;
+  border-radius: 10px;
+  color: white;
   max-width: 500px;
-  margin: 0 auto;
-  background: #fdf6f0;
-  color: #4e342e;
+  width: 100%;
+`;
+
+const Title = styled.h2`
+  margin-bottom: 20px;
+  color: #fff1d6;
+`;
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+
+  input {
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: none;
+    font-size: 1rem;
+  }
+
+  button {
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: #ffe9b0;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      background: white;
+    }
+  }
 `;
 
 export default function User() {
@@ -37,16 +83,19 @@ export default function User() {
   return (
     <>
       <Header />
-      <Wrapper>
-        <h2>Brukerregistrering</h2>
-        <form onSubmit={handleSubmit}>
-          <input type="text" name="firstName" placeholder="Fornavn" onChange={handleChange} required /><br />
-          <input type="text" name="lastName" placeholder="Etternavn" onChange={handleChange} required /><br />
-          <input type="email" name="email" placeholder="E-post" onChange={handleChange} required /><br />
-          <input type="tel" name="phone" placeholder="Telefonnummer" onChange={handleChange} required /><br />
-          <button type="submit">Send inn</button>
-        </form>
-      </Wrapper>
+      <HeroSection>
+        <FormCard>
+          <Title>Brukerregistrering</Title>
+          <StyledForm onSubmit={handleSubmit}>
+            <input type="text" name="firstName" placeholder="Fornavn" onChange={handleChange} required />
+            <input type="text" name="lastName" placeholder="Etternavn" onChange={handleChange} required />
+            <input type="email" name="email" placeholder="E-post" onChange={handleChange} required />
+            <input type="tel" name="phone" placeholder="Telefonnummer" onChange={handleChange} required />
+            <button type="submit">Send inn</button>
+          </StyledForm>
+        </FormCard>
+      </HeroSection>
+      <Footer />
     </>
   );
 }

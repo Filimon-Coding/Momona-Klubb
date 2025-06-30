@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Header from '../components/header/header';
+import Footer from '../components/footer/footer';
 
 const Spacer = styled.div`
   height: 60px;
@@ -68,6 +69,7 @@ const ContactPage = () => {
           </p>
         </SectionContent>
       </HeroSection>
+      <Footer/>
     </>
   );
 };

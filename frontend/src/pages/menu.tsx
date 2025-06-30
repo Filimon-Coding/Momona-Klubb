@@ -1,42 +1,85 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Header from '../components/header/header'; // ✅ shared header
+import Header from '../components/header/header';
+import cocaColaImg from '../components//images/andrey-ilkevich-Qvnohn4GyJA-unsplash.jpg';
+import orangeJuiceImg from '../components/images/abhishek-hajare-kkrXVKK-jhg-unsplash.jpg';
+import Footer from '../components/footer/footer';
 
-const PageWrapper = styled.div`
-  display: flex;
+
+
+const HeroSection = styled.section`
+  background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1950&q=80');
+  background-size: cover;
+  background-position: center;
   min-height: 100vh;
-  background-color: #fdf6f0;
+  padding: 80px 40px 60px 40px;
+  position: relative;
+  color: white;
+  display: flex;
+  justify-content: flex-start;
+`;
+
+const SectionContent = styled.div`
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 10px;
+  padding: 40px;
+  max-width: 1200px;
+  width: 100%;
 `;
 
 const Sidebar = styled.div`
-  width: 220px;
-  background: #fff4dc;
-  padding: 20px;
+  width: 180px;
   font-weight: bold;
-  color: #5e412f;
+
+  div {
+    margin-bottom: 12px;
+    cursor: pointer;
+    padding: 6px 12px;
+    color: #ffe9b0;
+    border-radius: 6px;
+    transition: 0.2s;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    &.active {
+      background-color: #ffe9b0;
+      color: #2f1a0e;
+    }
+  }
 `;
 
 const Content = styled.div`
   flex: 1;
-  padding: 30px;
 `;
 
 const Category = styled.h2`
-  margin-bottom: 15px;
-  color: #a0522d;
+  margin-bottom: 20px;
+  color: #fff1d6;
 `;
 
 const MenuGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 20px;
 `;
 
+
 const Card = styled.div`
-  background: #fffdf9;
+  background:rgb(248, 247, 245);
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(160, 82, 45, 0.1);
   overflow: hidden;
+  box-shadow: 0 2px 8px rgba(160, 82, 45, 0.2);
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
 `;
 
 const CardImage = styled.img`
@@ -56,12 +99,12 @@ const Name = styled.h3`
 
 const Description = styled.p`
   font-size: 0.9rem;
-  color: #555;
+  color: #4b2e2e;
 `;
 
 const Price = styled.div`
   background: #f6c28b;
-  color: #4b2e2e;
+  color: #3a1f0f;
   font-weight: bold;
   padding: 5px 10px;
   margin-top: 10px;
@@ -94,22 +137,115 @@ const menuData: MenuData = {
       image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b',
       price: '149 kr',
     },
+    {
+      name: 'Grilled Chicken',
+      description: 'Juicy grilled chicken with herbs and seasonal vegetables.',
+      image: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092',
+      price: '169 kr',
+    },
+    {
+      name: 'Veggie Burger',
+      description: 'Plant-based burger with lettuce, tomato, and avocado.',
+      image: 'https://images.unsplash.com/photo-1550547660-d9450f859349',
+      price: '139 kr',
+    },
+    {
+      name: 'Pasta Alfredo',
+      description: 'Creamy alfredo pasta with mushrooms and parmesan.',
+      image: 'https://images.unsplash.com/photo-1606112219348-204d7d8b94ee',
+      price: '159 kr',
+    },
+    {
+      name: 'Tibs (Ethiopian Stir Fry)',
+      description: 'Tender beef cubes sautéed with onion, garlic, and pepper.',
+      image: 'https://images.unsplash.com/photo-1606112219348-204d7d8b94ee',
+      price: '179 kr',
+    },
+    {
+      name: 'Grilled Chicken',
+      description: 'Juicy grilled chicken with herbs and seasonal vegetables.',
+      image: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092',
+      price: '169 kr',
+    },
+    {
+      name: 'Veggie Burger',
+      description: 'Plant-based burger with lettuce, tomato, and avocado.',
+      image: 'https://images.unsplash.com/photo-1550547660-d9450f859349',
+      price: '139 kr',
+    },
+    {
+      name: 'Pasta Alfredo',
+      description: 'Creamy alfredo pasta with mushrooms and parmesan.',
+      image: 'https://images.unsplash.com/photo-1606112219348-204d7d8b94ee',
+      price: '159 kr',
+    },
+    {
+      name: 'Tibs (Ethiopian Stir Fry)',
+      description: 'Tender beef cubes sautéed with onion, garlic, and pepper.',
+      image: 'https://images.unsplash.com/photo-1606112219348-204d7d8b94ee',
+      price: '179 kr',
+    }
   ],
   Drinks: [
     {
       name: 'Mango Juice',
       description: 'Fresh mango juice, served cold.',
-      image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b',
+      image: orangeJuiceImg,
       price: '49 kr',
     },
     {
       name: 'Coca Cola',
       description: 'Chilled bottle of Coca Cola.',
-      image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b',
+      image: cocaColaImg,
       price: '35 kr',
     },
+    {
+      name: 'Orange Fanta',
+      description: 'Refreshing sparkling orange soda.',
+      image: orangeJuiceImg,
+      price: '35 kr',
+    },
+    {
+      name: 'Water Bottle',
+      description: 'Still mineral water, 0.5L.',
+      image: orangeJuiceImg,
+      price: '25 kr',
+    },
+    {
+      name: 'Cappuccino',
+      description: 'Hot cappuccino with milk foam and cinnamon.',
+      image: orangeJuiceImg,
+      price: '42 kr',
+    }
   ],
+  Desserts: [
+    {
+      name: 'Tiramisu',
+      description: 'Classic Italian dessert with coffee and mascarpone.',
+      image: 'https://images.unsplash.com/photo-1606112219348-204d7d8b94ee',
+      price: '69 kr',
+    },
+    {
+      name: 'Baklava',
+      description: 'Layered pastry with nuts and honey.',
+      image: 'https://images.unsplash.com/photo-1606112219348-204d7d8b94ee',
+      price: '55 kr',
+    },
+    {
+      name: 'Fruit Salad',
+      description: 'Seasonal fresh fruits served chilled.',
+      image: 'https://images.unsplash.com/photo-1606112219348-204d7d8b94ee',
+      price: '45 kr',
+    },
+    {
+      name: 'Chocolate Cake',
+      description: 'Rich chocolate cake with ganache topping.',
+      image: 'https://images.unsplash.com/photo-1606112219348-204d7d8b94ee',
+      price: '59 kr',
+    }
+  ]
 };
+
 
 export default function MenuPage() {
   const [selectedCategory, setSelectedCategory] = useState<keyof MenuData>('Main');
@@ -117,27 +253,38 @@ export default function MenuPage() {
   return (
     <>
       <Header />
-      <PageWrapper>
-        <Sidebar>
-          <div onClick={() => setSelectedCategory('Main')}>Main</div>
-          <div onClick={() => setSelectedCategory('Drinks')}>Drinks</div>
-        </Sidebar>
-        <Content>
-          <Category>{selectedCategory}</Category>
-          <MenuGrid>
-            {menuData[selectedCategory].map((item: MenuItem, idx: number) => (
-              <Card key={idx}>
-                <CardImage src={item.image} alt={item.name} />
-                <CardBody>
-                  <Name>{item.name}</Name>
-                  <Description>{item.description}</Description>
-                  <Price>{item.price}</Price>
-                </CardBody>
-              </Card>
+      <HeroSection>
+        <SectionContent>
+          <Sidebar>
+            {Object.keys(menuData).map((category) => (
+              <div
+                key={category}
+                className={selectedCategory === category ? 'active' : ''}
+                onClick={() => setSelectedCategory(category as keyof MenuData)}
+              >
+                {category}
+              </div>
             ))}
-          </MenuGrid>
-        </Content>
-      </PageWrapper>
+          </Sidebar>
+
+          <Content>
+            <Category>{selectedCategory}</Category>
+            <MenuGrid>
+              {menuData[selectedCategory].map((item, idx) => (
+                <Card key={idx}>
+                  <CardImage src={item.image} alt={item.name} />
+                  <CardBody>
+                    <Name>{item.name}</Name>
+                    <Description>{item.description}</Description>
+                    <Price>{item.price}</Price>
+                  </CardBody>
+                </Card>
+              ))}
+            </MenuGrid>
+          </Content>
+        </SectionContent>
+      </HeroSection>
+      <Footer />
     </>
   );
 }

@@ -1,61 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-
-const HeaderBar = styled.div`
-  background: rgba(0, 0, 0, 0.4);
-  color: white;
-  backdrop-filter: blur(6px);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  font-size: 1.4rem;
-  font-weight: bold;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-`;
+import Header from '../components/header/header';
+import Footer from '../components/footer/footer';
 
 const Spacer = styled.div`
   height: 60px;
-`;
-
-const Icons = styled.div`
-  display: flex;
-  gap: 15px;
-`;
-
-const MenuToggle = styled.div`
-  cursor: pointer;
-  font-size: 24px;
-`;
-
-const DropdownMenu = styled.div`
-  position: absolute;
-  top: 60px;
-  right: 30px;
-  background: rgba(20, 20, 20, 0.95);
-  color: white;
-  border-radius: 10px;
-  padding: 10px 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  display: flex;
-  flex-direction: column;
-  min-width: 180px;
-  z-index: 999;
-
-  a {
-    padding: 10px 20px;
-    color: white;
-    text-decoration: none;
-    transition: background 0.2s ease;
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
-  }
 `;
 
 const HeroSection = styled.section`
@@ -95,31 +44,10 @@ const Text = styled.p`
 `;
 
 const AboutPage = () => {
-  const [showMenu, setShowMenu] = useState(false);
-
   return (
     <>
-      <HeaderBar>
-        Momona Klubb
-        <Icons>
-          <span>📍</span>
-          <span>🍽️</span>
-          <span>📞</span>
-          <MenuToggle onClick={() => setShowMenu(!showMenu)}>&#9776;</MenuToggle>
-        </Icons>
-      </HeaderBar>
-
+      <Header />
       <Spacer />
-
-      {showMenu && (
-        <DropdownMenu>
-          <a href="/menu">Menu</a>
-          <a href="/availability">Check Availability</a>
-          <a href="/events">Events</a>
-          <a href="/about">About</a>
-          <a href="/contact">Contact</a>
-        </DropdownMenu>
-      )}
 
       <HeroSection>
         <SectionContent>
@@ -135,6 +63,7 @@ const AboutPage = () => {
           </Text>
         </SectionContent>
       </HeroSection>
+      <Footer />
     </>
   );
 };

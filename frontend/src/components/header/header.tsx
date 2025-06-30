@@ -7,7 +7,7 @@ const HeaderWrapper = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(92, 88, 88, 0.4);
   color: white;
   backdrop-filter: blur(6px);
   display: flex;
@@ -35,10 +35,10 @@ const MenuToggle = styled.div`
 `;
 
 const DropdownMenu = styled.div`
-  position: fixed; /* was absolute */
+  position: fixed; 
   top: 60px;
   right: 30px;
-  background: rgba(20, 20, 20, 0.95);
+  background: rgba(51, 48, 48, 0.95);
   color: white;
   border-radius: 10px;
   padding: 10px 0;
@@ -80,6 +80,8 @@ const Header = () => {
 
       {showMenu && (
         <DropdownMenu>
+          
+          <Link to="/home">Home</Link>
           <Link to="/menu">Menu</Link>
           <Link to="/user">Register</Link>
           <Link to="/about">About</Link>

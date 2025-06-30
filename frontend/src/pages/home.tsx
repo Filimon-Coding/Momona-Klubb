@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Header from '../components/header/header';
+import Footer from '../components/footer/footer';
 
 const Spacer = styled.div`
   height: 60px;
@@ -34,15 +35,15 @@ const FloatingButton = styled.a<{ top: string; left: string; shape?: 'circle' | 
   width: ${props => props.shape === 'square' ? '120px' : '100px'};
   height: ${props => props.shape === 'square' ? '120px' : '100px'};
   border-radius: ${props => props.shape === 'square' ? '10px' : '50%'};
-  background: rgba(139, 137, 137, 0.2);
+  background: rgba(26, 25, 25, 0.2);
   border: 4.5px solid white;
-  color: rgb(209, 215, 218);
+  color: rgb(241, 246, 248);
   font-size: 1.8rem;
   text-align: center;
   line-height: ${props => props.shape === 'square' ? '120px' : '100px'};
   text-decoration: none;
   font-weight: bold;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(7px);
   transition: 0.3s ease;
 
   &:hover {
@@ -64,6 +65,7 @@ const MainPage = () => {
         <FloatingButton href="/about" top="30%" left="75%">About</FloatingButton>
         <FloatingButton href="/contact" top="70%" left="80%" shape="square">Contact</FloatingButton>
       </HeroSection>
+      <Footer />
     </>
   );
 };
