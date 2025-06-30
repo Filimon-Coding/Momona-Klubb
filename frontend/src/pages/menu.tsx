@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Header from './header'; // ✅ shared header
+import Header from '../components/header/header'; // ✅ shared header
 
 const PageWrapper = styled.div`
   display: flex;

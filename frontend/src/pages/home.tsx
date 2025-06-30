@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Header from './header'; 
+import Header from '../components/header/header'; 
 
 const HeaderBar = styled.div`
   background: rgba(0, 0, 0, 0.4);
@@ -88,9 +88,10 @@ const FloatingButton = styled.a<{ top: string; left: string; shape?: 'circle' | 
   width: ${props => props.shape === 'square' ? '120px' : '100px'};
   height: ${props => props.shape === 'square' ? '120px' : '100px'};
   border-radius: ${props => props.shape === 'square' ? '10px' : '50%'};
-  background: rgba(255, 255, 255, 0.2);
-  border: 2px solid white;
-  color: white;
+  background: rgba(139, 137, 137, 0.2);
+  border: 4.5px solid white;
+  color:rgb(209, 215, 218);
+  font-size: 1.8rem; 
   text-align: center;
   line-height: ${props => props.shape === 'square' ? '120px' : '100px'};
   text-decoration: none;
@@ -134,7 +135,7 @@ const MainPage = () => {
       <HeroSection>
         <HeroTitle>Welcome to Momona Klubb</HeroTitle>
         <FloatingButton href="/menu" top="25%" left="10%">Menu</FloatingButton>
-        <FloatingButton href="/availability" top="50%" left="5%">Check</FloatingButton>
+        <FloatingButton href="/availability" top="50%" left="5%">Games</FloatingButton>
         <FloatingButton href="/events" top="65%" left="40%" shape="square">Events</FloatingButton>
         <FloatingButton href="/about" top="30%" left="75%">About</FloatingButton>
         <FloatingButton href="/contact" top="70%" left="80%" shape="square">Contact</FloatingButton>
@@ -142,5 +143,7 @@ const MainPage = () => {
     </>
   );
 };
+
+
 
 export default MainPage;

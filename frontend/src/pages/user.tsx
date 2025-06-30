@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Header from './header';
+import Header from '../components/header/header';
 
 const Wrapper = styled.div`
   padding: 60px 20px;
