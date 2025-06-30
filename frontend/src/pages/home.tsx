@@ -11,7 +11,7 @@ const HeroSection = styled.section`
   background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1950&q=80');
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  min-height: 100vh;
   padding-top: 60px;
   position: relative;
   display: flex;
@@ -20,12 +20,20 @@ const HeroSection = styled.section`
   flex-direction: column;
   color: white;
   text-align: center;
+
+  @media (max-width: 768px) {
+    padding: 100px 20px 40px 20px;
+  }
 `;
 
 const HeroTitle = styled.h1`
   font-size: 3.5rem;
   margin-bottom: 30px;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
+  }
 `;
 
 const FloatingButton = styled.a<{ top: string; left: string; shape?: 'circle' | 'square' }>`
@@ -50,7 +58,28 @@ const FloatingButton = styled.a<{ top: string; left: string; shape?: 'circle' | 
     background: white;
     color: black;
   }
+
+  /* 👇 Mobiltilpasning */
+  @media (max-width: 768px) {
+    position: static;
+    width: 90%;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 12px;
+    margin: 10px auto;
+    display: block;
+    font-size: 1.2rem;
+  }
 `;
+
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+`;
+
 
 const MainPage = () => {
   return (
@@ -59,11 +88,13 @@ const MainPage = () => {
       <Spacer />
       <HeroSection>
         <HeroTitle>Welcome to Momona Klubb</HeroTitle>
-        <FloatingButton href="/menu" top="25%" left="10%">Menu</FloatingButton>
-        <FloatingButton href="/availability" top="50%" left="5%">Games</FloatingButton>
-        <FloatingButton href="/events" top="65%" left="40%" shape="square">Events</FloatingButton>
-        <FloatingButton href="/about" top="30%" left="75%">About</FloatingButton>
-        <FloatingButton href="/contact" top="70%" left="80%" shape="square">Contact</FloatingButton>
+        <ButtonWrapper>
+          <FloatingButton href="/menu" top="25%" left="10%">Menu</FloatingButton>
+          <FloatingButton href="/availability" top="50%" left="5%">Games</FloatingButton>
+          <FloatingButton href="/events" top="65%" left="40%" shape="square">Events</FloatingButton>
+          <FloatingButton href="/about" top="30%" left="75%">About</FloatingButton>
+          <FloatingButton href="/contact" top="70%" left="80%" shape="square">Contact</FloatingButton>
+        </ButtonWrapper>
       </HeroSection>
       <Footer />
     </>

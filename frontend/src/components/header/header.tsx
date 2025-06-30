@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import logo from '../images/logo.png'; 
 
 const HeaderWrapper = styled.div`
   position: fixed;
@@ -17,6 +18,17 @@ const HeaderWrapper = styled.div`
   font-size: 1.4rem;
   font-weight: bold;
   z-index: 1500; /* Lower than dropdown but above page */
+`;
+
+const Brand = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  img {
+    height: 60px;
+    width: auto;
+  }
 `;
 
 const Spacer = styled.div`
@@ -67,7 +79,10 @@ const Header = () => {
   return (
     <>
       <HeaderWrapper>
-        Momona Klubb
+        <Brand>
+          <img src={logo} alt="Momona Klubb Logo" />
+          Momona Klubb
+        </Brand>
         <Icons>
           <span>📍</span>
           <span>🍽️</span>

@@ -12,23 +12,24 @@ const HeroSection = styled.section`
   background-size: cover;
   background-position: center;
   min-height: 100vh;
-  padding: 80px 40px 60px 40px;
+  padding: 80px 0 60px 0;
   position: relative;
   color: white;
-  display: flex;
-  justify-content: flex-start;
 `;
-
 const SectionContent = styled.div`
   display: flex;
-  gap: 30px;
   align-items: flex-start;
-  flex-wrap: nowrap;
   background: rgba(0, 0, 0, 0.55);
   border-radius: 10px;
   padding: 40px;
-  max-width: 1200px;
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 20px;
+  }
 `;
 
 const Sidebar = styled.div`
@@ -56,6 +57,12 @@ const Sidebar = styled.div`
 
 const Content = styled.div`
   flex: 1;
+  padding-left: 30px;
+
+  @media (max-width: 768px) {
+    padding-left: 0;
+    margin-top: 20px;
+  }
 `;
 
 const Category = styled.h2`
@@ -65,9 +72,18 @@ const Category = styled.h2`
 
 const MenuGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(4, 1fr); /* 4 per rad */
   gap: 20px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr); /* 2 per rad på nettbrett */
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr; /* 1 per rad på mobil */
+  }
 `;
+
 
 
 const Card = styled.div`
