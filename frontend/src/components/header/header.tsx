@@ -35,7 +35,7 @@ const MenuToggle = styled.div`
 `;
 
 const DropdownMenu = styled.div`
-  position: absolute;
+  position: fixed; /* was absolute */
   top: 60px;
   right: 30px;
   background: rgba(20, 20, 20, 0.95);
@@ -46,7 +46,7 @@ const DropdownMenu = styled.div`
   display: flex;
   flex-direction: column;
   min-width: 180px;
-  z-index: 2000; /* Ensures it floats over all content */
+  z-index: 2000; /* must be higher than HeroSection or floating buttons */
 
   a {
     padding: 10px 20px;
@@ -59,6 +59,7 @@ const DropdownMenu = styled.div`
     }
   }
 `;
+
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
