@@ -1,25 +1,19 @@
+# Momona-Klubb – Fullstack Project (React + ASP.NET Core + SQLite)
 
+A practical IT project where the frontend and backend are connected via a local SQLite database. The application supports menu display and user registration.
 
-Momona-Klubb – Fullstack-prosjekt (React + ASP.NET Core + SQLite)
+## Technologies Used
 
-Et praktisk IT-prosjekt hvor frontend og backend er koblet sammen med en lokal SQLite-database for å håndtere meny og brukerregistrering.
-
-🏗️ Teknologier brukt
-
-Frontend: React (TypeScript)
-
-Backend: ASP.NET Core Web API
-
-Database: SQLite
-
-Tooling: Visual Studio Code, SQLite CLI, Git
-
-
+* **Frontend:** React (TypeScript)
+* **Backend:** ASP.NET Core Web API
+* **Database:** SQLite
+* **Tools:** Visual Studio Code, SQLite CLI, Git
 
 ---
 
-📁 Prosjektstruktur
+## Project Structure
 
+```
 Momona-Klubb/
 ├── backend/
 │   ├── Controllers/
@@ -32,99 +26,104 @@ Momona-Klubb/
     │   ├── Menu.tsx
     │   └── User.tsx
     └── App.tsx (Routing)
-
-
----
-
-🌐 Funksjonalitet
-
-🧾 Menyvisning (API og visning)
-
-GET /api/menuitems – Returnerer en liste med menyobjekter
-
-Frontend-side /menu viser menyen
-
-
-🧍‍♂️ Brukerregistrering
-
-POST /api/user – Sender inn brukerdata fra skjema
-
-GET /api/user – Henter ut alle registrerte brukere
-
-Frontend-side /user inneholder et enkelt skjema
-
-
+```
 
 ---
 
-🔗 Forbindelse mellom frontend og backend
+## Functionality
 
-Backend kjører på http://localhost:5272
+### Menu Display (API and frontend)
 
-Frontend kjører på http://localhost:3000
+* `GET /api/menuitems` – Returns a list of menu items
+* The frontend `/menu` page fetches and displays the data
 
-CORS er aktivert for å tillate kommunikasjon mellom disse
+### User Registration
 
-
+* `POST /api/user` – Sends user data from form to backend
+* `GET /api/user` – Returns all registered users
+* The frontend `/user` page includes a basic form for registration
 
 ---
 
-🗃️ SQLite-database
+## Frontend–Backend Connection
 
-Automatisk opprettet med EnsureCreated() i Program.cs
+* Backend runs at: `http://localhost:5272`
+* Frontend runs at: `http://localhost:3000`
+* CORS is enabled to allow communication between both servers
 
-Data blir lagret i menu.db
+---
 
-Du kan åpne databasen med:
+## SQLite Database
 
+* The database (`menu.db`) is created automatically via `EnsureCreated()` in `Program.cs`
+* Data is persisted locally in `menu.db`
+
+To open and inspect the database via CLI:
+
+```bash
 sqlite3 menu.db
-
-Se data i Users-tabellen:
-
 .mode column
 .headers on
 SELECT * FROM Users;
-
-
-
----
-
-✅ Hva fungerer
-
-[x] Vise meny fra backend
-
-[x] Registrere bruker fra frontend
-
-[x] Lagre og vise data fra SQLite
-
-[x] Hente ut og vise brukerdata
-
-[x] Feilhåndtering og inputvalidering
-
-
+```
 
 ---
 
-📌 Neste steg (forslag)
+## What Works
 
-[ ] Legge til validering i backend
-
-[ ] Legge til slett/rediger-funksjon
-
-[ ] Lage adminvisning for brukere
-
-[ ] Bedre styling
-
-
+* [x] Menu data displayed from backend
+* [x] User registration from frontend
+* [x] Data is stored and retrieved using SQLite
+* [x] API fetch and display for users
+* [x] Basic input validation and error handling
 
 ---
 
-🧠 Lært så langt
+## How to Run the Application
 
-Oppsett av fullstack-prosjekt
+### Prerequisites
 
-Bruk av API-endepunkter med React
+* .NET SDK installed
+* Node.js installed
+* SQLite CLI (optional for viewing database manually)
 
-Integrasjon med SQLite
+### Step 1: Start the Backend
 
-Feilsøking med terminal og databaser
+1. Navigate to the `backend` folder and MomonaAPi folder 
+2. Run the following commands:
+
+```bash
+dotnet restore
+dotnet build
+dotnet run
+```
+
+### Step 2: Start the Frontend
+
+1. Navigate to the `frontend` folder
+2. Install dependencies and start React app:
+
+```bash
+npm install
+npm start
+```
+
+The app should now be available at `http://localhost:3000`
+
+---
+
+## Next Steps (Suggestions)
+
+* [ ] Add backend validation
+* [ ] Implement delete/edit functionality
+* [ ] Create admin view for user data
+* [ ] Improve UI styling
+
+---
+
+## Key Learnings
+
+* Setting up a fullstack project using ASP.NET Core and React
+* Using REST API endpoints in React
+* Integrating a lightweight SQLite database
+* Debugging through terminal and database inspection tools
