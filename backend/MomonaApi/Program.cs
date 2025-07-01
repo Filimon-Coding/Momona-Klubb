@@ -43,10 +43,27 @@ using (var scope = app.Services.CreateScope())
     if (!db.MenuItems.Any())
     {
         db.MenuItems.AddRange(
-            new MenuItem { Name = "Pizza", Price = 129 },
-            new MenuItem { Name = "Burger", Price = 99 },
-            new MenuItem { Name = "Pasta", Price = 115 }
-        );
+        // Main
+        new MenuItem { Name = "Injera Special", Description = "Ethiopian injera with spicy lentils and vegetables.", Category = "Main", Image = "https://images.unsplash.com/photo-1606112219348-204d7d8b94ee", Price = 129 },
+        new MenuItem { Name = "Spaghetti Bolognese", Description = "Italian pasta with meat sauce.", Category = "Main", Image = "https://images.unsplash.com/photo-1603133872878-684f208fb84b", Price = 149 },
+        new MenuItem { Name = "Grilled Chicken", Description = "Juicy grilled chicken with herbs and seasonal vegetables.", Category = "Main", Image = "https://images.unsplash.com/photo-1600891964599-f61ba0e24092", Price = 169 },
+        new MenuItem { Name = "Veggie Burger", Description = "Plant-based burger with lettuce, tomato, and avocado.", Category = "Main", Image = "https://images.unsplash.com/photo-1550547660-d9450f859349", Price = 139 },
+        new MenuItem { Name = "Pasta Alfredo", Description = "Creamy alfredo pasta with mushrooms and parmesan.", Category = "Main", Image = "https://images.unsplash.com/photo-1606112219348-204d7d8b94ee", Price = 159 },
+        new MenuItem { Name = "Tibs (Ethiopian Stir Fry)", Description = "Tender beef cubes sautéed with onion, garlic, and pepper.", Category = "Main", Image = "https://images.unsplash.com/photo-1606112219348-204d7d8b94ee", Price = 179 },
+        
+        // Drinks
+        new MenuItem { Name = "Mango Juice", Description = "Fresh mango juice, served cold.", Category = "Drinks", Image = "https://images.unsplash.com/photo-1615485293112-1a4c8d64c1ee", Price = 49 },
+        new MenuItem { Name = "Coca Cola", Description = "Chilled bottle of Coca Cola.", Category = "Drinks", Image = "https://images.unsplash.com/photo-1600891964599-f61ba0e24092", Price = 35 },
+        new MenuItem { Name = "Orange Fanta", Description = "Refreshing sparkling orange soda.", Category = "Drinks", Image = "https://images.unsplash.com/photo-1615485293112-1a4c8d64c1ee", Price = 35 },
+        new MenuItem { Name = "Water Bottle", Description = "Still mineral water, 0.5L.", Category = "Drinks", Image = "https://images.unsplash.com/photo-1615485293112-1a4c8d64c1ee", Price = 25 },
+        new MenuItem { Name = "Cappuccino", Description = "Hot cappuccino with milk foam and cinnamon.", Category = "Drinks", Image = "https://images.unsplash.com/photo-1615485293112-1a4c8d64c1ee", Price = 42 },
+        
+        // Desserts
+        new MenuItem { Name = "Tiramisu", Description = "Classic Italian dessert with coffee and mascarpone.", Category = "Desserts", Image = "https://images.unsplash.com/photo-1606112219348-204d7d8b94ee", Price = 69 },
+        new MenuItem { Name = "Baklava", Description = "Layered pastry with nuts and honey.", Category = "Desserts", Image = "https://images.unsplash.com/photo-1606112219348-204d7d8b94ee", Price = 55 },
+        new MenuItem { Name = "Fruit Salad", Description = "Seasonal fresh fruits served chilled.", Category = "Desserts", Image = "https://images.unsplash.com/photo-1606112219348-204d7d8b94ee", Price = 45 },
+        new MenuItem { Name = "Chocolate Cake", Description = "Rich chocolate cake with ganache topping.", Category = "Desserts", Image = "https://images.unsplash.com/photo-1606112219348-204d7d8b94ee", Price = 59 }
+    );
         db.SaveChanges();
     }
 }

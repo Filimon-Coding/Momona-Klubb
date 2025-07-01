@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using MomonaApi.DAL;
 using MomonaApi.Model;
-using MomonaApi.DAL; // hvis AppDbContext ligger i DAL
 
 namespace MomonaApi.Controllers
 {
@@ -16,9 +16,17 @@ namespace MomonaApi.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<MenuItem>> Get()
+        public IActionResult GetAll()
         {
             return Ok(_context.MenuItems.ToList());
+        }
+
+        [HttpPost]
+        public IActionResult Create(MenuItem item)
+        {
+            _context.MenuItems.Add(item);
+            _context.SaveChanges();
+            return CreatedAtAction(nameof(GetAll), new { id = item.Id }, item);
         }
     }
 }
