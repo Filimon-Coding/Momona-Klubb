@@ -8,5 +8,6 @@ namespace MomonaApi.Model
         public string Image { get; set; } = "";
         public string Category { get; set; } = "";
         public int Price { get; set; }
+        public bool IsHidden { get; set; } = false; 
     }
 }

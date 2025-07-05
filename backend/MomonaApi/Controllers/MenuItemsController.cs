@@ -21,7 +21,13 @@ namespace MomonaApi.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok(_context.MenuItems.ToList());
+        var isAdmin = User.IsInRole("Admin");
+
+        var items = _context.MenuItems
+        .Where(m => isAdmin || !m.IsHidden)
+        .ToList();
+
+        return Ok(items);
         }
 
         // Kun tilgjengelig for Admin-bruker
@@ -48,10 +54,33 @@ namespace MomonaApi.Controllers
             item.Price = updatedItem.Price;
             item.Image = updatedItem.Image;
             item.Category = updatedItem.Category;
+            item.IsHidden = updatedItem.IsHidden; 
 
             _context.SaveChanges();
-            return NoContent();
+            return Ok(item);
+
         }
+
+
+        [Authorize(Roles = "Admin")]
+        [HttpPut("{id}/visibility")]
+        public IActionResult ToggleVisibility(int id)
+        {
+            var item = _context.MenuItems.Find(id);
+            if (item == null) return NotFound();
+
+            item.IsHidden = !item.IsHidden;
+            _context.SaveChanges();
+            return Ok(item);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet("admin")]
+            public IActionResult GetAllForAdmin()
+        {
+            return Ok(_context.MenuItems.ToList()); // includes hidden
+        }
+
 
         // Sletter et menyobjekt (kun for Admin)
         [Authorize(Roles = "Admin")]
