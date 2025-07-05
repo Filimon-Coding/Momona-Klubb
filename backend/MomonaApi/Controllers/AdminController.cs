@@ -52,9 +52,10 @@ namespace MomonaApi.Controllers
                 return Unauthorized("Incorrect password.");
             }
 
-            // Generate JWT
+            /// Generate JWT and return with firstName
             var token = GenerateJwtToken(admin);
-            return Ok(new { token });
+            return Ok(new { token, firstName = admin.FirstName });
+
         }
 
         private string GenerateJwtToken(Admin admin)
