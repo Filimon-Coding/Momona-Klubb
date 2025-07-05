@@ -15,16 +15,33 @@ namespace MomonaApi.DAL
 
         public DbSet<GameStatus> GameStatuses { get; set; }
         
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-            {
-                base.OnModelCreating(modelBuilder);
+        public DbSet<Event>      Events       { get; set; } 
 
-                modelBuilder.Entity<GameStatus>().HasData(
-                    new GameStatus { Id = 1, GameType = "Pool", AvailableCount = 1 },
-                    new GameStatus { Id = 2, GameType = "Foosball", AvailableCount = 1 },
-                    new GameStatus { Id = 3, GameType = "Cards", AvailableCount = 1 }
-                );
-            }
+        /* ------------ seed data (ONE override only!) ------------ */
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            /* GameStatus seeds */
+            modelBuilder.Entity<GameStatus>().HasData(
+                new GameStatus { Id = 1, GameType = "Pool", AvailableCount = 1 },
+                new GameStatus { Id = 2, GameType = "Foosball", AvailableCount = 1 },
+                new GameStatus { Id = 3, GameType = "Cards", AvailableCount = 1 }
+            );
+
+            /* Event seeds (optional – remove if you don’t want a default row) */
+            modelBuilder.Entity<Event>().HasData(
+                new Event
+                {
+                    Id = 1,
+                    Title = "Live Jazz Night",
+                    StartsAt = new DateTime(2025, 8, 17, 18, 0, 0, DateTimeKind.Utc),
+                    Description = "Enjoy a smooth evening of live jazz…",
+                    ImageUrl = "/images/jazz.jpg",
+                    IsHidden    = false
+                }
+            );
+        }
 
     }
 }
