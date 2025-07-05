@@ -1,7 +1,12 @@
 using MomonaApi.Model;
 using Microsoft.EntityFrameworkCore;
 using MomonaApi.DAL;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddAuthorization();
+
 
 // Registrer nødvendige tjenester
 builder.Services.AddEndpointsApiExplorer();       // Swagger support
@@ -16,6 +21,20 @@ builder.Services.AddCors(options =>
               .AllowAnyMethod()
               .AllowAnyHeader());
 });
+
+builder.Services.AddAuthentication("Bearer")
+    .AddJwtBearer("Bearer", options =>
+    {
+        options.TokenValidationParameters = new()
+        {
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(
+                System.Text.Encoding.UTF8.GetBytes("dsfkjdkjfDSDDsxkcxnc zmxSADASDajhk!!%#ldfjdfjkjdfSdfsQQWeqwexczcQQQAsdpn!#"))
+        };
+    });
 
 
 
@@ -70,6 +89,10 @@ using (var scope = app.Services.CreateScope())
 
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
 
 // ✅ Aktiver kontrollerbaserte endepunkter som /api/menuitems
 app.MapControllers();
