@@ -10,14 +10,59 @@ using MomonaApi.DAL;
 namespace MomonaApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250705123657_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250705141757_InitWithGames")]
+    partial class InitWithGames
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.6");
+
+            modelBuilder.Entity("GameStatus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("AvailableCount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("GameType")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.PrimitiveCollection<string>("Queue")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GameStatuses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AvailableCount = 1,
+                            GameType = "Pool",
+                            Queue = "[]"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AvailableCount = 1,
+                            GameType = "Foosball",
+                            Queue = "[]"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AvailableCount = 1,
+                            GameType = "Cards",
+                            Queue = "[]"
+                        });
+                });
 
             modelBuilder.Entity("MomonaApi.Model.Admin", b =>
                 {
