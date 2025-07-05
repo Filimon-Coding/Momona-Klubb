@@ -30,6 +30,11 @@ const ContactInfo = styled.div`
     display: block;
   }
 `;
+const OpeningHours = styled.div`
+  font-size: 0.95rem;
+  color: #ffeccc;
+  margin-top: 10px;
+`;
 
 const Copyright = styled.div`
   margin-top: 10px;
@@ -46,7 +51,8 @@ const Footer = () => {
           <span>📍 Osterhaus' gate 7B, 0183 Oslo</span>
           <span>📞 +47 123 45 678</span>
           <span>✉️ alem.tewele7@gmail.com</span>
-        </ContactInfo>
+          </ContactInfo>
+          <OpeningHours>🕒 Open daily from 14:00 to 22:00</OpeningHours>
         <Copyright>
           &copy; {new Date().getFullYear()} Momona Klubb — All rights reserved.
         </Copyright>

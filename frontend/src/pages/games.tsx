@@ -121,7 +121,7 @@ export default function GamesPage() {
         <Container>
           <h1>🎯 Games & Availability</h1>
           <SubNote>
-            Join the queue to reserve a table. Admins can adjust capacity and manage the queue.
+            <strong> Join the queue to reserve a table. Admins can adjust capacity and manage the queue. </strong>
           </SubNote>
 
           {games.map(game => {

@@ -10,7 +10,7 @@ import EventsPage from './pages/events'
 
 import UserPage from './pages/user';
 import RequireAuth from './utils/RequireAuth';
-import AdminPage from './pages/admin/menuItems';
+import AdminPage from './pages/admin/menuAdmin';
 import Login from './pages/admin/login';
 import AdminRegister from './pages/admin/adminRegister';
 import EventsAdmin from './pages/admin/EventsAdmin';

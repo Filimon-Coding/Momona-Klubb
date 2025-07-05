@@ -46,6 +46,8 @@ const Button = styled.button`
 `;
 
 export default function AdminPage() {
+
+  const token = localStorage.getItem('token');
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -58,10 +60,32 @@ export default function AdminPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const formDataImage = new FormData();
+    formDataImage.append('file', file);
+
+    try {
+      const res = await fetch('http://localhost:5272/api/upload/image', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${token}` },
+        body: formDataImage
+      });
+
+      if (!res.ok) throw new Error('Upload failed');
+      const data = await res.json();
+      setFormData(prev => ({ ...prev, image: data.imageUrl }));
+    } catch (err) {
+      alert('Failed to upload image');
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
   
-    const token = localStorage.getItem('token');
+
   
     const payload = {
       ...formData,
@@ -100,8 +124,8 @@ export default function AdminPage() {
         <Form onSubmit={handleSubmit}>
           <Input name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
           <TextArea name="description" placeholder="Description" value={formData.description} onChange={handleChange} required />
-          <Input name="image" placeholder="Image URL" value={formData.image} onChange={handleChange} required />
-            <select
+          <Input name="price" placeholder="Price (number)" type="number" value={formData.price} onChange={handleChange} required />
+          <select
             name="category"
             value={formData.category}
             onChange={handleChange}
@@ -113,7 +137,25 @@ export default function AdminPage() {
             <option value="Drinks">Drinks</option>
             <option value="Desserts">Desserts</option>
             </select>
-          <Input name="price" placeholder="Price (number)" type="number" value={formData.price} onChange={handleChange} required />
+
+          {/* Upload from PC */}
+          <Input type="file" accept="image/*" onChange={handleImageUpload} />
+
+          {/* Optional manual URL */}
+          <Input name="image" placeholder="Or paste image URL" value={formData.image} onChange={handleChange} />
+
+          {/* Preview image */}
+
+          
+          {formData.image && (
+            <img
+              src={formData.image}
+              alt="preview"
+              style={{ maxWidth: '100%', borderRadius: '8px' }}
+            />
+          )}
+           
+
           <Button type="submit">Add</Button>
         </Form>
       </Container>
