@@ -2,13 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import Header from '../components/header/header';
 import Footer from '../components/footer/footer';
+import heroImage from '../components/images/jalo-hotel-0fV_upUSaTs-unsplash.jpg';
 
 const Spacer = styled.div`
   height: 60px;
 `;
 
-const HeroSection = styled.section`
-  background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1950&q=80');
+const HeroSection = styled.section<{ bg: string }>`
+  background-image: url(${props => props.bg});
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -49,7 +50,7 @@ const AboutPage = () => {
       <Header />
       <Spacer />
 
-      <HeroSection>
+      <HeroSection bg={heroImage}>
         <SectionContent>
           <Title>About Momona Klubb</Title>
           <Text>

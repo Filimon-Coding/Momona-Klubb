@@ -50,7 +50,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseStaticFiles();  // slik at bilder i wwwroot/images/ kan vises i frontend
 // Aktiver CORS før kontrollerendepunkter
 app.UseCors("AllowFrontend");
 

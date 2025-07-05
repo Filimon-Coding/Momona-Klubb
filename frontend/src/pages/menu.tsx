@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Header from '../components/header/header';
-import cocaColaImg from '../components//images/andrey-ilkevich-Qvnohn4GyJA-unsplash.jpg';
-import orangeJuiceImg from '../components/images/abhishek-hajare-kkrXVKK-jhg-unsplash.jpg';
 import Footer from '../components/footer/footer';
+import heroImage from '../components/images/eugene-nelmin-fIij-cL9XTA-unsplash.jpg';
 
+// ---------- Styled Components ----------
 
-
-const HeroSection = styled.section`
-  background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1950&q=80');
+const HeroSection = styled.section<{ bg: string }>`
+  background-image: url(${props => props.bg});
   background-size: cover;
   background-position: center;
   min-height: 100vh;
@@ -16,6 +15,7 @@ const HeroSection = styled.section`
   position: relative;
   color: white;
 `;
+
 const SectionContent = styled.div`
   display: flex;
   align-items: flex-start;
@@ -72,30 +72,41 @@ const Category = styled.h2`
 
 const MenuGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 per rad */
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 
   @media (max-width: 1024px) {
-    grid-template-columns: repeat(2, 1fr); /* 2 per rad på nettbrett */
+    grid-template-columns: repeat(2, 1fr);
   }
 
   @media (max-width: 600px) {
-    grid-template-columns: 1fr; /* 1 per rad på mobil */
+    grid-template-columns: 1fr;
   }
 `;
 
-
-
-const Card = styled.div`
-  background:rgb(248, 247, 245);
+const Card = styled.div<{ dimmed?: boolean }>`
+  background: ${props => (props.dimmed ? '#eee' : 'rgb(248, 247, 245)')};
+  opacity: ${props => (props.dimmed ? 0.6 : 1)};
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(160, 82, 45, 0.2);
   transition: transform 0.2s;
+  position: relative;
 
   &:hover {
     transform: translateY(-5px);
   }
+`;
+
+const HiddenLabel = styled.div`
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background: #333;
+  color: white;
+  padding: 3px 6px;
+  font-size: 12px;
+  border-radius: 4px;
 `;
 
 const CardImage = styled.img`
@@ -128,157 +139,101 @@ const Price = styled.div`
   border-radius: 5px;
 `;
 
+// ---------- Type Definitions ----------
+
 type MenuItem = {
+  id: number;
   name: string;
   description: string;
   image: string;
-  price: string;
+  category: string;
+  price: number;
+  isHidden: boolean;
 };
 
-type MenuData = {
-  [key: string]: MenuItem[];
-};
-
-const menuData: MenuData = {
-  Main: [
-    {
-      name: 'Injera Special',
-      description: 'Ethiopian injera with spicy lentils and vegetables.',
-      image: 'https://images.unsplash.com/photo-1606112219348-204d7d8b94ee',
-      price: '129 kr',
-    },
-    {
-      name: 'Spaghetti Bolognese',
-      description: 'Italian pasta with meat sauce.',
-      image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b',
-      price: '149 kr',
-    },
-    {
-      name: 'Grilled Chicken',
-      description: 'Juicy grilled chicken with herbs and seasonal vegetables.',
-      image: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092',
-      price: '169 kr',
-    },
-    {
-      name: 'Veggie Burger',
-      description: 'Plant-based burger with lettuce, tomato, and avocado.',
-      image: 'https://images.unsplash.com/photo-1550547660-d9450f859349',
-      price: '139 kr',
-    },
-    {
-      name: 'Pasta Alfredo',
-      description: 'Creamy alfredo pasta with mushrooms and parmesan.',
-      image: 'https://images.unsplash.com/photo-1606112219348-204d7d8b94ee',
-      price: '159 kr',
-    },
-    {
-      name: 'Tibs (Ethiopian Stir Fry)',
-      description: 'Tender beef cubes sautéed with onion, garlic, and pepper.',
-      image: 'https://images.unsplash.com/photo-1606112219348-204d7d8b94ee',
-      price: '179 kr',
-    },
-    {
-      name: 'Grilled Chicken',
-      description: 'Juicy grilled chicken with herbs and seasonal vegetables.',
-      image: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092',
-      price: '169 kr',
-    },
-    {
-      name: 'Veggie Burger',
-      description: 'Plant-based burger with lettuce, tomato, and avocado.',
-      image: 'https://images.unsplash.com/photo-1550547660-d9450f859349',
-      price: '139 kr',
-    },
-    {
-      name: 'Pasta Alfredo',
-      description: 'Creamy alfredo pasta with mushrooms and parmesan.',
-      image: 'https://images.unsplash.com/photo-1606112219348-204d7d8b94ee',
-      price: '159 kr',
-    },
-    {
-      name: 'Tibs (Ethiopian Stir Fry)',
-      description: 'Tender beef cubes sautéed with onion, garlic, and pepper.',
-      image: 'https://images.unsplash.com/photo-1606112219348-204d7d8b94ee',
-      price: '179 kr',
-    }
-  ],
-  Drinks: [
-    {
-      name: 'Mango Juice',
-      description: 'Fresh mango juice, served cold.',
-      image: orangeJuiceImg,
-      price: '49 kr',
-    },
-    {
-      name: 'Coca Cola',
-      description: 'Chilled bottle of Coca Cola.',
-      image: cocaColaImg,
-      price: '35 kr',
-    },
-    {
-      name: 'Orange Fanta',
-      description: 'Refreshing sparkling orange soda.',
-      image: orangeJuiceImg,
-      price: '35 kr',
-    },
-    {
-      name: 'Water Bottle',
-      description: 'Still mineral water, 0.5L.',
-      image: orangeJuiceImg,
-      price: '25 kr',
-    },
-    {
-      name: 'Cappuccino',
-      description: 'Hot cappuccino with milk foam and cinnamon.',
-      image: orangeJuiceImg,
-      price: '42 kr',
-    }
-  ],
-  Desserts: [
-    {
-      name: 'Tiramisu',
-      description: 'Classic Italian dessert with coffee and mascarpone.',
-      image: 'https://images.unsplash.com/photo-1606112219348-204d7d8b94ee',
-      price: '69 kr',
-    },
-    {
-      name: 'Baklava',
-      description: 'Layered pastry with nuts and honey.',
-      image: 'https://images.unsplash.com/photo-1606112219348-204d7d8b94ee',
-      price: '55 kr',
-    },
-    {
-      name: 'Fruit Salad',
-      description: 'Seasonal fresh fruits served chilled.',
-      image: 'https://images.unsplash.com/photo-1606112219348-204d7d8b94ee',
-      price: '45 kr',
-    },
-    {
-      name: 'Chocolate Cake',
-      description: 'Rich chocolate cake with ganache topping.',
-      image: 'https://images.unsplash.com/photo-1606112219348-204d7d8b94ee',
-      price: '59 kr',
-    }
-  ]
-};
-
+// ---------- Component ----------
 
 export default function MenuPage() {
-  const [selectedCategory, setSelectedCategory] = useState<keyof MenuData>('Main');
+  const [items, setItems] = useState<MenuItem[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string>('Main');
+  const [editId, setEditId] = useState<number | null>(null);
+  const [editedItem, setEditedItem] = useState<Partial<MenuItem>>({});
+  const token = localStorage.getItem('token');
+
+  useEffect(() => {
+    const endpoint = token
+      ? 'http://localhost:5272/api/menuitems/admin'
+      : 'http://localhost:5272/api/menuitems';
+  
+    fetch(endpoint, {
+      headers: token ? { Authorization: `Bearer ${token}` } : {}
+    })
+      .then(res => res.json())
+      .then(data => setItems(data))
+      .catch(err => console.error('Error fetching items', err));
+  }, []);
+  
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEditedItem({ ...editedItem, [e.target.name]: e.target.value });
+  };
+
+  const updateItem = async (updated: MenuItem) => {
+    const res = await fetch(`http://localhost:5272/api/menuitems/${updated.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(updated)
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      setItems(prev => prev.map(i => i.id === data.id ? data : i));
+    } else {
+      alert('Error updating item');
+    }
+  };
+
+  const handleSave = (id: number) => {
+    const original = items.find(i => i.id === id);
+    if (!original) return;
+
+    updateItem({ ...original, ...editedItem, id, isHidden: original.isHidden });
+    setEditId(null);
+    setEditedItem({});
+  };
+
+  const handleDelete = async (id: number) => {
+    const res = await fetch(`http://localhost:5272/api/menuitems/${id}`, {
+      method: 'DELETE',
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    if (res.ok) setItems(prev => prev.filter(item => item.id !== id));
+    else alert('Error deleting item');
+  };
+
+  const handleHideToggle = (item: MenuItem) => {
+    updateItem({ ...item, isHidden: !item.isHidden });
+  };
+
+  const categories = Array.from(new Set(items.map(i => i.category)));
+  const filteredItems = items.filter(i => i.category === selectedCategory);
 
   return (
     <>
       <Header />
-      <HeroSection>
+      <HeroSection bg={heroImage}>
         <SectionContent>
           <Sidebar>
-            {Object.keys(menuData).map((category) => (
+            {categories.map(c => (
               <div
-                key={category}
-                className={selectedCategory === category ? 'active' : ''}
-                onClick={() => setSelectedCategory(category as keyof MenuData)}
+                key={c}
+                className={selectedCategory === c ? 'active' : ''}
+                onClick={() => setSelectedCategory(c)}
               >
-                {category}
+                {c}
               </div>
             ))}
           </Sidebar>
@@ -286,16 +241,88 @@ export default function MenuPage() {
           <Content>
             <Category>{selectedCategory}</Category>
             <MenuGrid>
-              {menuData[selectedCategory].map((item, idx) => (
-                <Card key={idx}>
-                  <CardImage src={item.image} alt={item.name} />
+              {filteredItems.map(item => (
+                <Card key={item.id} dimmed={item.isHidden}>
+                  {item.isHidden && <HiddenLabel>Hidden</HiddenLabel>}
+                  <CardImage src={item.image} />
                   <CardBody>
-                    <Name>{item.name}</Name>
-                    <Description>{item.description}</Description>
-                    <Price>{item.price}</Price>
+                    {editId === item.id ? (
+                      <>
+                        <input name="name" value={editedItem.name ?? item.name} onChange={handleChange} />
+                        <input name="description" value={editedItem.description ?? item.description} onChange={handleChange} />
+                        <input name="price" value={editedItem.price ?? item.price} onChange={handleChange} />
+                        <input name="image" value={editedItem.image ?? item.image} onChange={handleChange} />
+                        <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
+                          <button onClick={() => handleSave(item.id)}>💾 Save</button>
+                          <button onClick={() => setEditId(null)}>❌ Cancel</button>
+                          <button onClick={() => handleDelete(item.id)}>🗑️ Delete</button>
+                          <button onClick={() => handleHideToggle(item)}>👻 {item.isHidden ? 'Show' : 'Hide'}</button>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <Name>{item.name}</Name>
+                        <Description>{item.description}</Description>
+                        <Price>{item.price} kr</Price>
+                        {token && (
+                          <>
+                            <button
+                              style={{
+                                background: '#f28a8a',
+                                color: 'white',
+                                border: 'none',
+                                borderRadius: '20px',
+                                padding: '8px 12px',
+                                marginTop: '10px'
+                              }}
+                              onClick={() => {
+                                setEditId(item.id);
+                                setEditedItem(item);
+                              }}
+                            >
+                                Edit
+                            </button>
+                            <button
+                              style={{
+                                background: item.isHidden ? '#6bc36b' : '#ffc107',
+                                color: '#000',
+                                border: 'none',
+                                borderRadius: '16px',
+                                padding: '6px 10px',
+                                marginLeft: '10px'
+                              }}
+                              onClick={() => handleHideToggle(item)}
+                            >
+                              {item.isHidden ? 'Show' : ' Hide'}
+                            </button>
+                          </>
+                        )}
+                      </>
+                    )}
                   </CardBody>
                 </Card>
               ))}
+
+              {token && (
+                <Card
+                  onClick={() => window.location.href = '/admin'}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: 'pointer',
+                    background: '#ffe9b0',
+                    color: '#3a1f0f',
+                    fontWeight: 'bold',
+                    fontSize: '1.5rem'
+                  }}
+                >
+                  <div style={{ textAlign: 'center' }}>
+                    ➕<br />
+                    Add Product
+                  </div>
+                </Card>
+              )}
             </MenuGrid>
           </Content>
         </SectionContent>

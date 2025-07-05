@@ -1,14 +1,43 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import Header from '../components/header/header';
 import Footer from '../components/footer/footer';
+import heroImage from '../components/images/gwenn-klabbers-2X69LtzVnQE-unsplash.jpg';
 
+/* ---------- global animations ---------- */
+const GlobalAnimations = createGlobalStyle`
+  @keyframes float1 {
+    0%   { transform: translate(0px, 0px); }
+    25%  { transform: translate(10px, -20px); }
+    50%  { transform: translate(-10px, 60px); }
+    75%  { transform: translate(115px, 5px); }
+    100% { transform: translate(0px, 0px); }
+  }
+
+  @keyframes float2 {
+    0%   { transform: translate(0px, 0px); }
+    20%  { transform: translate(-15px, -10px); }
+    40%  { transform: translate(10px, 65px); }
+    60%  { transform: translate(-10px, 5px); }
+    80%  { transform: translate(115px, -15px); }
+    100% { transform: translate(0px, 0px); }
+  }
+
+  @keyframes float3 {
+    0%   { transform: translate(0px, 0px); }
+    33%  { transform: translate(120px, 60px); }
+    66%  { transform: translate(-15px, -10px); }
+    100% { transform: translate(0px, 0px); }
+  }
+`;
+
+/* ---------- layout ---------- */
 const Spacer = styled.div`
   height: 60px;
 `;
 
-const HeroSection = styled.section`
-  background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1950&q=80');
+const HeroSection = styled.section<{ bg: string }>`
+  background-image: url(${props => props.bg});
   background-size: cover;
   background-position: center;
   min-height: 100vh;
@@ -36,30 +65,40 @@ const HeroTitle = styled.h1`
   }
 `;
 
-const FloatingButton = styled.a<{ top: string; left: string; shape?: 'circle' | 'square' }>`
+/* ---------- floating buttons ---------- */
+const FloatingButton = styled.a<{
+  top: string;
+  left: string;
+  shape?: 'circle' | 'square';
+  animationName: string;
+  animationDelay: string;
+}>`
   position: absolute;
-  top: ${props => props.top};
-  left: ${props => props.left};
-  width: ${props => props.shape === 'square' ? '120px' : '100px'};
-  height: ${props => props.shape === 'square' ? '120px' : '100px'};
-  border-radius: ${props => props.shape === 'square' ? '10px' : '50%'};
+  top: ${p => p.top};
+  left: ${p => p.left};
+  width: ${p => (p.shape === 'square' ? '120px' : '100px')};
+  height: ${p => (p.shape === 'square' ? '120px' : '100px')};
+  border-radius: ${p => (p.shape === 'square' ? '10px' : '50%')};
   background: rgba(26, 25, 25, 0.2);
   border: 4.5px solid white;
   color: rgb(241, 246, 248);
   font-size: 1.8rem;
   text-align: center;
-  line-height: ${props => props.shape === 'square' ? '120px' : '100px'};
+  line-height: ${p => (p.shape === 'square' ? '120px' : '100px')};
   text-decoration: none;
   font-weight: bold;
   backdrop-filter: blur(7px);
   transition: 0.3s ease;
 
+  animation: ${p => p.animationName} 10s ease-in-out infinite;
+  animation-delay: ${p => p.animationDelay};
+
   &:hover {
     background: white;
     color: black;
+    transform: scale(1.08);
   }
 
-  /* 👇 Mobiltilpasning */
   @media (max-width: 768px) {
     position: static;
     width: 90%;
@@ -69,9 +108,9 @@ const FloatingButton = styled.a<{ top: string; left: string; shape?: 'circle' | 
     margin: 10px auto;
     display: block;
     font-size: 1.2rem;
+    animation: none;
   }
 `;
-
 
 const ButtonWrapper = styled.div`
   display: flex;
@@ -80,20 +119,21 @@ const ButtonWrapper = styled.div`
   width: 100%;
 `;
 
-
+/* ---------- component ---------- */
 const MainPage = () => {
   return (
     <>
+      <GlobalAnimations />
       <Header />
       <Spacer />
-      <HeroSection>
+      <HeroSection bg={heroImage}>
         <HeroTitle>Welcome to Momona Klubb</HeroTitle>
         <ButtonWrapper>
-          <FloatingButton href="/menu" top="25%" left="10%">Menu</FloatingButton>
-          <FloatingButton href="/availability" top="50%" left="5%">Games</FloatingButton>
-          <FloatingButton href="/events" top="65%" left="40%" shape="square">Events</FloatingButton>
-          <FloatingButton href="/about" top="30%" left="75%">About</FloatingButton>
-          <FloatingButton href="/contact" top="70%" left="80%" shape="square">Contact</FloatingButton>
+          <FloatingButton href="/menu"    top="25%" left="10%" animationName="float1" animationDelay="0s">Menu</FloatingButton>
+          <FloatingButton href="/games"   top="50%" left="5%"  animationName="float2" animationDelay="1.2s">Games</FloatingButton>
+          <FloatingButton href="/events"  top="65%" left="40%" animationName="float3" animationDelay="0.6s" shape="square">Events</FloatingButton>
+          <FloatingButton href="/about"   top="30%" left="75%" animationName="float2" animationDelay="0.3s">About</FloatingButton>
+          <FloatingButton href="/contact" top="70%" left="80%" animationName="float1" animationDelay="1s" shape="square">Contact</FloatingButton>
         </ButtonWrapper>
       </HeroSection>
       <Footer />

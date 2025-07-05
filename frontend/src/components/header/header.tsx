@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // ✅ FIXED
 import styled from 'styled-components';
-import logo from '../images/logo.png'; 
+import logo from '../images/logo.png';
+
+
 
 const HeaderWrapper = styled.div`
   position: fixed;
@@ -72,25 +74,117 @@ const DropdownMenu = styled.div`
   }
 `;
 
+const RightArea = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+`;
+
+const Avatar = styled.div`
+  width: 32px;
+  height: 32px;
+  background: #ff9d00;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+`;
+
+const Name = styled.span`
+  color: white;
+  font-size: 1rem;
+`;
+
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const [showAdminDropdown, setShowAdminDropdown] = useState(false);
+  const navigate = useNavigate();
+  const token = localStorage.getItem('token');
+  const adminName = localStorage.getItem('adminName');
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('adminName');
+    navigate('/login');
+  };
 
   return (
     <>
       <HeaderWrapper>
+        <Link to="/home" style={{ textDecoration: 'none', color: 'white' }}>
         <Brand>
-          <img src={logo} alt="Momona Klubb Logo" />
-          Momona Klubb
+            <img src={logo} alt="Momona Klubb Logo" />
+            Momona Klubb
         </Brand>
+        </Link>
+
+
         <Icons>
-          <span>📍</span>
-          <span>🍽️</span>
-          <span>📞</span>
-          <MenuToggle onClick={() => setShowMenu(!showMenu)}>
-            &#9776;
-          </MenuToggle>
-        </Icons>
+  {/* Ikoner i midten */}
+  <span>📍</span>
+  <span>🍽️</span>
+  <span>📞</span>
+
+  {/* Login eller Admin */}
+  {token ? (
+    <div style={{ position: 'relative' }}>
+      <div
+        onClick={() => {
+          setShowMenu(false);
+          setShowAdminDropdown(prev => !prev);
+        }}
+        style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}
+      >
+        <span>🧑</span>
+        <span>{adminName}</span>
+      </div>
+
+      {showAdminDropdown && (
+        <div style={{
+          position: 'absolute',
+          top: '35px',
+          right: 0,
+          background: '#333',
+          padding: '10px',
+          borderRadius: '8px',
+          zIndex: 3000
+        }}>
+          <button onClick={handleLogout} style={{ background: 'none', border: 'none', color: 'white', cursor: 'pointer' }}>
+            🚪 Logout
+          </button>
+        </div>
+      )}
+    </div>
+  ) : (
+    <span
+      style={{ cursor: 'pointer' }}
+      onClick={() => {
+        setShowAdminDropdown(false);
+        setShowMenu(false);
+        window.location.href = '/login';
+      }}
+      
+    >
+      🔐
+    </span>
+  )}
+
+  {/* Hamburger */}
+  <MenuToggle
+    onClick={() => {
+      setShowAdminDropdown(false);
+      setShowMenu(prev => !prev);
+    }}
+  >
+    &#9776;
+  </MenuToggle>
+</Icons>
+
+
+
       </HeaderWrapper>
 
       {showMenu && (
