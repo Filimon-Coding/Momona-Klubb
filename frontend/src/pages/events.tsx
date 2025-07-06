@@ -37,6 +37,7 @@ const Btn  = styled.button`
 `;
 const Warn = styled(Btn)`background:#d9534f;&:hover{background:#c9302c;}`;
 
+
 /* ---------- types ---------- */
 interface Event {
   id:         number;
@@ -68,7 +69,7 @@ export default function EventsPage() {
 
   /* helpers ----------------------------------------------------- */
   const updateEvent = async (ev:Event|Partial<Event>, id:number) =>{
-    const ok = await fetch(`/api/events/${id}`,{
+    const ok = await fetch(`${API}/${id}`, {
       method:'PUT',
       headers:{'Content-Type':'application/json',Authorization:`Bearer ${token}`},
       body:JSON.stringify(ev)
@@ -77,7 +78,7 @@ export default function EventsPage() {
   };
   const toggleHide  = (e:Event)=> updateEvent({...e,isHidden:!e.isHidden},e.id);
   const delEvent    = async(id:number)=>{
-    const ok=await fetch(`/api/events/${id}`,{method:'DELETE',headers:{Authorization:`Bearer ${token}`}}).then(r=>r.ok);
+    const ok = await fetch(`${API}/${id}`, { method: 'DELETE', headers: { Authorization: `Bearer ${token}` } });
     if(ok) fetchEvents();
   };
 
