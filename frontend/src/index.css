@@ -16,6 +16,6 @@ body, html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: black; /* optional to avoid white flashes */
+  background-color: rgb(37, 35, 35); /* optional to avoid white flashes */
 }
 

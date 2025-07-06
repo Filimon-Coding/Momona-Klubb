@@ -48,7 +48,7 @@ const AboutPage = () => {
   return (
     <>
       <Header />
-      <Spacer />
+      
 
       <HeroSection bg={heroImage}>
         <SectionContent>

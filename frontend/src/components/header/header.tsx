@@ -34,7 +34,7 @@ const Brand = styled.div`
 `;
 
 const Spacer = styled.div`
-  height: 60px;
+  height: 0px;
 `;
 
 const Icons = styled.div`
