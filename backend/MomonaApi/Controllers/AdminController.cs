@@ -24,22 +24,7 @@ namespace MomonaApi.Controllers
             _config = config;
         }
 
-        [HttpPost("register")]
-        public IActionResult Register(Admin admin)
-        {
-            // Check if admin already exists
-            if (_context.Admins.Any(a => a.Email == admin.Email))
-            {
-                return BadRequest("Admin already exists.");
-            }
 
-            // Hash the password and save
-            admin.PasswordHash = PasswordHelper.HashPassword(admin.PasswordHash);
-            _context.Admins.Add(admin);
-            _context.SaveChanges();
-
-            return Ok("Admin registered successfully.");
-        }
 
         [HttpPost("login")]
         public IActionResult Login([FromBody] Admin login)

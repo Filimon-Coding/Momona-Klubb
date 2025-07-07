@@ -14,7 +14,7 @@ namespace MomonaApi.DAL
 
         public DbSet<GameStatus> GameStatuses { get; set; }
         
-        public DbSet<Event>      Events       { get; set; } 
+        public DbSet<Event>      Events       { get; set; }
 
         /* ------------ seed data (ONE override only!) ------------ */
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -37,9 +37,20 @@ namespace MomonaApi.DAL
                     StartsAt = new DateTime(2025, 8, 17, 18, 0, 0, DateTimeKind.Utc),
                     Description = "Enjoy a smooth evening of live jazz…",
                     ImageUrl = "/images/jazz.jpg",
-                    IsHidden    = false
+                    IsHidden = false
                 }
             );
+            
+            modelBuilder.Entity<Admin>().HasData(
+                new Admin
+                {
+                    Id      = 1,
+                    Email        = "super@momona.no",
+                    FirstName    = "Super",
+                    LastName     = "Admin",
+                    PasswordHash = PasswordHelper.HashPassword("SuperSecret123!")
+                });
+
         }
 
     }
