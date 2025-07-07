@@ -75,17 +75,6 @@ const Button = styled.button`
   }
 `;
 
-const RegisterLink = styled(Link)`
-  margin-top: 15px;
-  display: inline-block;
-  color: #ffe9b0;
-  text-decoration: underline;
-
-  &:hover {
-    color: #fff;
-  }
-`;
-
 
 
 
@@ -130,7 +119,6 @@ export default function AdminLogin() {
             />
             <Button type="submit">Logg inn</Button>
           </StyledForm>
-          <RegisterLink to="/admin-register">Har du ikke bruker? Registrer her</RegisterLink>
         </SectionContent>
       </HeroSection>
       <Footer />

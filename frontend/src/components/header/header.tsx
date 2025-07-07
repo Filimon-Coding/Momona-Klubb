@@ -172,7 +172,7 @@ const Header: React.FC = () => {
 
         {/* --------- Ikoner / hamburger --------- */}
         <Icons>
-          {token ? (
+          {token && (
             <div style={{ position: 'relative' }}>
               <AdminAvatar onClick={toggleAdmin}>
                 <span role="img" aria-label="admin">👤</span>
@@ -188,15 +188,7 @@ const Header: React.FC = () => {
                 </SubMenu>
               )}
             </div>
-          ) : (
-            <span
-              style={{ cursor: 'pointer' }}
-              onClick={() => navigate('/login')}
-              role="img"
-              aria-label="login"
-            >🔐</span>
           )}
-
           <MenuToggle onClick={toggleMobile}>
             &#9776;
           </MenuToggle>

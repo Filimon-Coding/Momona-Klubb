@@ -55,6 +55,8 @@ export default function EventsPage() {
   const [draft,setDraft]           = useState<Partial<Event>>({});
   const token                      = localStorage.getItem('token');
   const isAdmin                    = !!token;
+  const [uploadingId, setUploadingId] = useState<number | null>(null);
+
 
   /* fetch ------------------------------------------------------- */
    const API = 'http://localhost:5272/api/events';
@@ -81,6 +83,34 @@ export default function EventsPage() {
     const ok = await fetch(`${API}/${id}`, { method: 'DELETE', headers: { Authorization: `Bearer ${token}` } });
     if(ok) fetchEvents();
   };
+  const handleImageUpload = async (
+  e: React.ChangeEvent<HTMLInputElement>,
+  eventId: number
+) => {
+  const file = e.target.files?.[0];
+  if (!file) return;
+
+  const formData = new FormData();
+  formData.append('file', file);
+
+  try {
+    setUploadingId(eventId);
+    const res = await fetch('http://localhost:5272/api/upload/image', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}` },
+      body: formData
+    });
+
+    if (!res.ok) throw new Error('Upload failed');
+    const data = await res.json();
+    setDraft((prev) => ({ ...prev, imageUrl: data.imageUrl }));
+  } catch (err) {
+    alert('Failed to upload image');
+  } finally {
+    setUploadingId(null);
+  }
+};
+
 
   /* render ------------------------------------------------------ */
   return(
@@ -117,7 +147,32 @@ export default function EventsPage() {
                         style={{width:'100%',height:'60px'}}
                         value={draft.description ?? ev.description}
                         onChange={e=>setDraft({...draft,description:e.target.value})}/>
+
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => handleImageUpload(e, ev.id)}
+                        style={{ marginBottom: '10px' }}
+                      />
+
+                      {/* Uploading indicator */}
+                      {uploadingId === ev.id && <p style={{ fontSize: '0.9rem' }}>Uploading image...</p>}
+                      {(draft.imageUrl || ev.imageUrl) && (
+                      <img
+                        src={draft.imageUrl ?? ev.imageUrl}
+                        alt="Preview"
+                        style={{
+                          width: '100%',
+                          height: '160px',
+                          objectFit: 'cover',
+                          borderRadius: '6px',
+                          marginBottom: '10px'
+                        }}
+                      />
+                    )}
+
                       <div style={{marginTop:'8px'}}>
+                        
                         <Btn  onClick={()=>updateEvent({...ev,...draft},ev.id)}>Save</Btn>
                         <Btn  onClick={()=>{setEditId(null);setDraft({});}}>Cancel</Btn>
                       </div>

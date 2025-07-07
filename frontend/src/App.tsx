@@ -12,7 +12,6 @@ import AdminDashboard from './pages/admin/DashboardAdmin';
 import RequireAuth from './utils/RequireAuth';
 import MenuAdmin      from './pages/admin/MenuAdmin';
 import Login from './pages/admin/LoginAdmin';
-import AdminRegister from './pages/admin/RegisterAdmin';
 import EventsAdmin    from './pages/admin/EventsAdmin';
 
 function App() {
@@ -58,7 +57,6 @@ function App() {
 
         {/* ----------------  AUTH  -------------------- */}
         <Route path="/login"           element={<Login/>}/>
-        <Route path="/admin-register"  element={<AdminRegister/>}/>
       </Routes>
     </Router>
   );

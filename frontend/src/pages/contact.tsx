@@ -5,7 +5,7 @@ import Footer from '../components/footer/footer';
 import heroImage from '../components/images/cedar-creation-0OgV2lVj0Ko-unsplash.jpg';
 
 const Spacer = styled.div`
-  height: 60px;
+  height: 0px;
 `;
 
 const HeroSection = styled.section<{ bg: string }>`

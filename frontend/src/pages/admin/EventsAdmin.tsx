@@ -1,198 +1,263 @@
-/*  src/pages/admin/EventsAdmin.tsx  */
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
+import bgImage from '../../components/images/alex-padurariu-mqyMjCTWJyQ-unsplash.jpg';
 
-/* ---------- constants ---------- */
-const API   = 'http://localhost:5272/api/events';
-const TOKEN = localStorage.getItem('token') || '';          // empty string when not logged in
-const AUTH  : HeadersInit = TOKEN ? { Authorization: `Bearer ${TOKEN}` } : {};
+/* --- API config --- */
+const API = 'http://localhost:5272/api/events';
+const TOKEN = localStorage.getItem('token') || '';
+const AUTH: HeadersInit = TOKEN ? { Authorization: `Bearer ${TOKEN}` } : {};
 
-/* ---------- styled ---------- */
-const Wrap = styled.div`
-  max-width:900px;margin:80px auto 60px;padding:30px;
-  background:#fff9f1;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.15);
-`;
-const H1   = styled.h1`margin:0 0 25px;color:#ff9d00;`;
-const Row  = styled.div`margin-bottom:20px;border-bottom:1px solid #eee;padding-bottom:18px;`;
-const Btn  = styled.button`
-  background:#ff9d00;color:#fff;border:none;border-radius:6px;
-  padding:6px 12px;cursor:pointer;margin-right:10px;font-size:.9rem;
-  &:hover{background:#e68a00;}
-`;
-const Warn = styled(Btn)`background:#d9534f;&:hover{background:#c9302c;}`;
-const Input= styled.input`padding:6px 8px;margin:4px 8px 8px 0;width:240px;max-width:100%;`;
-const Text = styled.textarea`padding:6px 8px;width:240px;max-width:100%;height:80px;display:block;`;
-
-/* ---------- types ---------- */
-export interface Event {
+/* --- Types --- */
+interface Event {
   id: number;
   title: string;
-  startsAt: string;           // ISO
+  startsAt: string;
   description: string;
   imageUrl: string;
   isHidden: boolean;
 }
 
-/* ============================================================ */
+/* --- Styled Components --- */
+const HeroSection = styled.section<{ bg: string }>`
+  background-image: url(${props => props.bg});
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  padding-top: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  position: relative;
+`;
+
+const Overlay = styled.div`
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+`;
+
+const Container = styled.div`
+  position: relative;
+  z-index: 2;
+  max-width: 750px;
+  width: 90%;
+  background: rgba(0, 0, 0, 0.65);
+  padding: 40px;
+  border-radius: 12px;
+  color: #fff;
+`;
+
+const SectionTitle = styled.h2`
+  color: #ffe9b0;
+  margin-bottom: 25px;
+`;
+
+const EventCard = styled.div`
+  background: #fff9f1;
+  color: #3a1f0f;
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 20px;
+`;
+
+const EventImage = styled.img`
+  width: 100%;
+  max-height: 160px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 10px;
+`;
+
+const Button = styled.button`
+  background-color: #ff9d00;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 8px;
+  &:hover {
+    background-color: #e68a00;
+  }
+`;
+
+const DangerButton = styled(Button)`
+  background-color: #d9534f;
+  &:hover {
+    background-color: #c9302c;
+  }
+`;
+
+const Input = styled.input`
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  width: 100%;
+`;
+
+const TextArea = styled.textarea`
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  resize: vertical;
+  font-size: 1rem;
+  width: 100%;
+  margin-bottom: 10px;
+`;
+
+const ImagePreview = styled.img`
+  max-width: 100%;
+  border-radius: 8px;
+  margin-top: 10px;
+`;
+
+/* --- Component --- */
 const EventsAdmin: React.FC = () => {
-  const [events,  setEvents]   = useState<Event[]>([]);
-  const [loading, setLoading]  = useState(true);
-  const [error,   setError]    = useState<string | null>(null);
+  const [events, setEvents] = useState<Event[]>([]);
+  const [editId, setEditId] = useState<number | null>(null);
+  const [draft, setDraft] = useState<Partial<Event>>({});
 
-  const [editId, setEditId]    = useState<number | null>(null);
-  const [draft,  setDraft]     = useState<Partial<Event>>({});
-
-  /* ---------- data ---------- */
   const fetchEvents = async () => {
-    setLoading(true); setError(null);
     try {
       const res = await fetch(`${API}?all=true`, { headers: AUTH });
-      if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
-      setEvents(await res.json());
-    } catch (err: any) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
+      if (!res.ok) throw new Error();
+      const data = await res.json();
+      setEvents(data);
+    } catch {
+      alert('Error fetching events.');
     }
   };
 
-  useEffect(() => { fetchEvents(); }, []);        // initial load
+  
+  useEffect(() => { fetchEvents(); }, []);
 
-  /* ---------- helpers ---------- */
   const save = async () => {
-    if (!draft.title) return;
+    if (!draft.title || !draft.startsAt) return;
 
     const method = editId ? 'PUT' : 'POST';
-    const url    = editId ? `${API}/${editId}` : API;
+    const url = editId ? `${API}/${editId}` : API;
 
-    const ok = await fetch(url, {
+    const res = await fetch(url, {
       method,
       headers: { 'Content-Type': 'application/json', ...AUTH },
       body: JSON.stringify(draft)
-    }).then(r => r.ok);
+    });
 
-    if (ok) { setEditId(null); setDraft({}); fetchEvents(); }
+    if (res.ok) {
+      setEditId(null);
+      setDraft({});
+      fetchEvents();
+    } else {
+      alert('Failed to save event');
+    }
   };
 
   const del = async (id: number) => {
     if (!window.confirm('Delete this event?')) return;
-
-    const ok = await fetch(`${API}/${id}`, {
-      method: 'DELETE',
-      headers: AUTH
-    }).then(r => r.ok);
-
-    if (ok) fetchEvents();
+    const res = await fetch(`${API}/${id}`, { method: 'DELETE', headers: AUTH });
+    if (res.ok) fetchEvents();
   };
 
   const toggleHide = async (ev: Event) => {
-    const ok = await fetch(`${API}/${ev.id}`, {
+    const res = await fetch(`${API}/${ev.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json', ...AUTH },
       body: JSON.stringify({ ...ev, isHidden: !ev.isHidden })
-    }).then(r => r.ok);
-
-    if (ok) fetchEvents();
+    });
+    if (res.ok) fetchEvents();
   };
 
-  /* ---------- render ---------- */
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+      const res = await fetch('http://localhost:5272/api/upload/image', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${TOKEN}` },
+        body: formData
+      });
+
+      if (!res.ok) throw new Error();
+      const data = await res.json();
+      setDraft(prev => ({ ...prev, imageUrl: data.imageUrl }));
+    } catch {
+      alert('Failed to upload image');
+    }
+  };
+
   return (
     <>
       <Header />
-      <Wrap>
-        <H1>Manage Events</H1>
+      <HeroSection bg={bgImage}>
+        <Overlay />
+        <Container>
+          <SectionTitle>Manage Events</SectionTitle>
 
-        {loading && <p>Loading…</p>}
-        {error && <p style={{ color: 'crimson' }}>Error: {error}</p>}
+          {events.map(ev => (
+            <EventCard key={ev.id}>
+              {ev.imageUrl && <EventImage src={ev.imageUrl} alt={ev.title} />}
+              <div style={{ marginBottom: '10px' }}>
+                <strong>{ev.title}</strong> — <em>{new Date(ev.startsAt).toLocaleString()}</em>
+                {ev.isHidden && <span style={{ color: '#888', marginLeft: 6 }}>(hidden)</span>}
+              </div>
+              <Button onClick={() => { setEditId(ev.id); setDraft(ev); }}>Edit</Button>
+              <Button onClick={() => toggleHide(ev)}>{ev.isHidden ? 'Show' : 'Hide'}</Button>
+              <DangerButton onClick={() => del(ev.id)}>Delete</DangerButton>
+            </EventCard>
+          ))}
 
-        {events.map(ev => (
-          <Row key={ev.id}>
-            <strong>{ev.title}</strong>&nbsp;
-            <em>{new Date(ev.startsAt).toLocaleString()}</em>
-            {ev.isHidden && <span style={{ marginLeft: 6, color: '#888' }}>(hidden)</span>}
-            <div style={{ marginTop: 6 }}>
-              <Btn  onClick={() => { setEditId(ev.id); setDraft(ev); }}>Edit</Btn>
-              <Btn  onClick={() => toggleHide(ev)}>{ev.isHidden ? 'Show' : 'Hide'}</Btn>
-              <Warn onClick={() => del(ev.id)}>Delete</Warn>
-            </div>
-          </Row>
-        ))}
+          <hr style={{ margin: '30px 0', borderColor: '#555' }} />
 
-        <hr />
-
-        <h2>{editId ? 'Edit event' : 'Add new event'}</h2>
-
-        <Input
-          placeholder="Title"
-          value={draft.title || ''}
-          onChange={e => setDraft({ ...draft, title: e.target.value })}
-        />
-        <Input
-          type="datetime-local"
-          value={(draft.startsAt || '').slice(0, 16)}
-          onChange={e => setDraft({ ...draft, startsAt: e.target.value })}
-        />
-
-        <Text
-          placeholder="Description"
-          value={draft.description || ''}
-          onChange={e => setDraft({ ...draft, description: e.target.value })}
-        />
-          {/* Upload from computer */}
+          <SectionTitle>{editId ? 'Edit Event' : 'Add New Event'}</SectionTitle>
           <Input
-            type="file"
-            accept="image/*"
-            onChange={async (e) => {
-              const file = e.target.files?.[0];
-              if (!file) return;
-
-              const formData = new FormData();
-              formData.append('file', file);
-
-              try {
-                const res = await fetch('http://localhost:5272/api/upload/image', {
-                  method: 'POST',
-                  headers: { Authorization: `Bearer ${TOKEN}` },
-                  body: formData
-                });
-                if (!res.ok) throw new Error('Upload failed');
-
-                const data = await res.json();
-                setDraft(prev => ({ ...prev, imageUrl: data.imageUrl }));
-              } catch (err) {
-                alert('Failed to upload image');
-              }
+            placeholder="Title"
+            value={draft.title || ''}
+            onChange={e => setDraft({ ...draft, title: e.target.value })}
+          />
+          <Input
+            type="date"
+            value={draft.startsAt?.slice(0, 10) || ''}
+            onChange={e => {
+              const currentTime = draft.startsAt?.slice(11, 16) || '12:00';
+              setDraft({ ...draft, startsAt: `${e.target.value}T${currentTime}` });
             }}
           />
-
-          {/* Preview image if available */}
-          {draft.imageUrl && (
-            <img
-              src={draft.imageUrl}
-              alt="preview"
-              style={{ maxWidth: '90%', marginTop: '10px', borderRadius: '8px' }}
-            />
-          )}
-
-          {/* Optional: manual image URL (in case admin pastes a URL manually) */}
+          <Input
+            type="time"
+            value={draft.startsAt?.slice(11, 16) || ''}
+            onChange={e => {
+              const currentDate = draft.startsAt?.slice(0, 10) || new Date().toISOString().slice(0, 10);
+              setDraft({ ...draft, startsAt: `${currentDate}T${e.target.value}` });
+            }}
+          />
+          <TextArea
+            placeholder="Description"
+            value={draft.description || ''}
+            onChange={e => setDraft({ ...draft, description: e.target.value })}
+          />
+          <Input type="file" accept="image/*" onChange={handleImageUpload} />
+          {draft.imageUrl && <ImagePreview src={draft.imageUrl} alt="preview" />}
           <Input
             placeholder="Or paste image URL"
             value={draft.imageUrl || ''}
             onChange={e => setDraft({ ...draft, imageUrl: e.target.value })}
           />
 
-
-        <div style={{ marginTop: 10 }}>
-          <Btn onClick={save}>{editId ? 'Update' : 'Create'}</Btn>
-          {editId && (
-            <Btn onClick={() => { setEditId(null); setDraft({}); }}>
-              Cancel
-            </Btn>
-          )}
-        </div>
-      </Wrap>
+          <div style={{ marginTop: '10px' }}>
+            <Button onClick={save}>{editId ? 'Update' : 'Create'}</Button>
+            {editId && <Button onClick={() => { setEditId(null); setDraft({}); }}>Cancel</Button>}
+          </div>
+        </Container>
+      </HeroSection>
       <Footer />
     </>
   );

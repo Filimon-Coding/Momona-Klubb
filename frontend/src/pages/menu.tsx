@@ -158,6 +158,7 @@ export default function MenuPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('Main');
   const [editId, setEditId] = useState<number | null>(null);
   const [editedItem, setEditedItem] = useState<Partial<MenuItem>>({});
+  const [uploadingImageId, setUploadingImageId] = useState<number | null>(null);
   const token = localStorage.getItem('token');
 
   useEffect(() => {
@@ -218,6 +219,34 @@ export default function MenuPage() {
     updateItem({ ...item, isHidden: !item.isHidden });
   };
 
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>, itemId: number) => {
+  const file = e.target.files?.[0];
+  if (!file) return;
+
+  const formDataImage = new FormData();
+  formDataImage.append('file', file);
+
+  try {
+    setUploadingImageId(itemId);
+
+    const res = await fetch('http://localhost:5272/api/upload/image', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}` },
+      body: formDataImage
+    });
+
+    if (!res.ok) throw new Error('Upload failed');
+    const data = await res.json();
+    setEditedItem(prev => ({ ...prev, image: data.imageUrl }));
+  } catch (err) {
+    alert('Image upload failed.');
+  } finally {
+    setUploadingImageId(null);
+  }
+};
+
+
   const categories = Array.from(new Set(items.map(i => i.category)));
   const filteredItems = items.filter(i => i.category === selectedCategory);
 
@@ -251,7 +280,23 @@ export default function MenuPage() {
                         <input name="name" value={editedItem.name ?? item.name} onChange={handleChange} />
                         <input name="description" value={editedItem.description ?? item.description} onChange={handleChange} />
                         <input name="price" value={editedItem.price ?? item.price} onChange={handleChange} />
-                        <input name="image" value={editedItem.image ?? item.image} onChange={handleChange} />
+                        <label>
+                          Upload New Image:
+                          <input
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => handleImageUpload(e, item.id)}
+                          />
+                        </label>
+                        {uploadingImageId === item.id && <div>Uploading image...</div>}
+                        {editedItem.image && (
+                          <img
+                            src={editedItem.image}
+                            alt="Preview"
+                            style={{ maxWidth: '100%', marginTop: '10px', borderRadius: '6px' }}
+                          />
+                        )}
+
                         <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
                           <button onClick={() => handleSave(item.id)}>💾 Save</button>
                           <button onClick={() => setEditId(null)}>❌ Cancel</button>
@@ -305,7 +350,7 @@ export default function MenuPage() {
 
               {token && (
                 <Card
-                  onClick={() => window.location.href = '/admin'}
+                  onClick={() => window.location.href = '/admin/menu'}
                   style={{
                     display: 'flex',
                     alignItems: 'center',
