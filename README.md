@@ -1,40 +1,38 @@
-````markdown
-# Momona-Klubb – Fullstack Project (React + ASP.NET Core + SQLite)
+README.md: |
+  # Momona-Klubb – Fullstack Project (React + ASP.NET Core + SQLite)
 
-A practical IT project where the frontend and backend are connected via a local SQLite database. The application supports menu display, user registration, admin login, and interactive game queue management.
+  A practical IT project where the frontend and backend are connected via a local SQLite database. The application supports menu display, user registration, admin login, and interactive game queue management.
 
-## Technologies Used
+  ## Technologies Used
 
-* **Frontend:** React (TypeScript)
-* **Backend:** ASP.NET Core Web API
-* **Database:** SQLite
-* **Auth:** JWT (JSON Web Tokens) + password hashing
-* **Tools:** Visual Studio Code, SQLite CLI, Git
+  * **Frontend:** React (TypeScript)
+  * **Backend:** ASP.NET Core Web API
+  * **Database:** SQLite
+  * **Auth:** JWT (JSON Web Tokens) + password hashing
+  * **Tools:** Visual Studio Code, SQLite CLI, Git
 
----
+  ---
 
-## Project Structure
+  ## Project Structure
 
-```text
-Momona-Klubb/
-├── backend/
-│   ├── Controllers/
-│   ├── Model/
-│   ├── Services/          (JWT, Auth logic)
-│   ├── DAL/AppDbContext.cs
-│   ├── Program.cs
-│   └── menu.db            (SQLite database)
-└── frontend/
-    ├── src/pages/
-    │   ├── Menu.tsx
-    │   ├── User.tsx
-    │   ├── Admin.tsx
-    │   └── Games.tsx
-    ├── src/components/    (forms, cards, etc.)
-    └── App.tsx            (Routing)
-````
+  ```text
+  Momona-Klubb/
+  ├── backend/
+  │   ├── Controllers/
+  │   ├── Model/
+  │   ├── Services/          (JWT, Auth logic)
+  │   ├── DAL/AppDbContext.cs
+  │   ├── Program.cs
+  │   └── menu.db            (SQLite database)
+  └── frontend/
+      ├── src/pages/
+      │   ├── Menu.tsx
+      │   ├── User.tsx
+      │   ├── Admin.tsx
+      │   └── Games.tsx
+      ├── src/components/    (forms, cards, etc.)
+      └── App.tsx            (Routing)
 
----
 
 ## Functionality
 
