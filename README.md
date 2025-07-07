@@ -1,4 +1,4 @@
-README.md: |
+
   # Momona-Klubb – Fullstack Project (React + ASP.NET Core + SQLite)
 
   A practical IT project where the frontend and backend are connected via a local SQLite database. The application supports menu display, user registration, admin login, and interactive game queue management.
