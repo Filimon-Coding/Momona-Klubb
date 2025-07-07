@@ -1,4 +1,4 @@
-```markdown
+````markdown
 # Momona-Klubb – Fullstack Project (React + ASP.NET Core + SQLite)
 
 A practical IT project where the frontend and backend are connected via a local SQLite database. The application supports menu display, user registration, admin login, and interactive game queue management.
@@ -15,25 +15,23 @@ A practical IT project where the frontend and backend are connected via a local 
 
 ## Project Structure
 
-```
-
+```text
 Momona-Klubb/
 ├── backend/
 │   ├── Controllers/
 │   ├── Model/
-│   ├── Services/ (JWT, Auth logic)
+│   ├── Services/          (JWT, Auth logic)
 │   ├── DAL/AppDbContext.cs
 │   ├── Program.cs
-│   └── menu.db (SQLite database)
+│   └── menu.db            (SQLite database)
 └── frontend/
-├── src/pages/
-│   ├── Menu.tsx
-│   ├── User.tsx
-│   ├── Admin.tsx
-│   └── Games.tsx
-├── src/components/ (forms, cards, etc.)
-└── App.tsx (Routing)
-
+    ├── src/pages/
+    │   ├── Menu.tsx
+    │   ├── User.tsx
+    │   ├── Admin.tsx
+    │   └── Games.tsx
+    ├── src/components/    (forms, cards, etc.)
+    └── App.tsx            (Routing)
 ````
 
 ---
@@ -64,12 +62,14 @@ Momona-Klubb/
 ### ✅ Game Queue System
 
 * `/api/games` endpoint for all games (pool, foosball, cards)
-* Users can:
-  - View current players per game
-  - Join a queue with name and timestamp
-* Admins can:
-  - View and manage all queues
-  - Remove users from any queue
+* **Users** can
+
+  * View current players per game
+  * Join a queue with name and timestamp
+* **Admins** can
+
+  * View and manage all queues
+  * Remove users from any queue
 * Frontend `/games` page handles full interaction
 
 ---
@@ -95,7 +95,7 @@ sqlite3 menu.db
 .mode column
 .headers on
 SELECT * FROM MenuItems;
-````
+```
 
 ---
 
@@ -121,7 +121,7 @@ SELECT * FROM MenuItems;
 * Node.js installed
 * SQLite CLI (optional for DB viewing)
 
-### Step 1: Start the Backend
+### Step 1 – Start the Backend
 
 ```bash
 cd backend
@@ -130,7 +130,7 @@ dotnet build
 dotnet run
 ```
 
-### Step 2: Start the Frontend
+### Step 2 – Start the Frontend
 
 ```bash
 cd frontend
@@ -155,11 +155,12 @@ The app runs at: [http://localhost:3000](http://localhost:3000)
 
 ## Key Learnings
 
-* Fullstack integration using ASP.NET Core + React
+* Full-stack integration using ASP.NET Core + React
 * Secure authentication using JWT and password hashing
 * RESTful API design and consumption in frontend
 * Database schema design in SQLite
 * State management and conditional UI rendering
 * Game logic and queue management across users/admins
 
+```
 ```
