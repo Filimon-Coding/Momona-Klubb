@@ -1,204 +1,222 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // ✅ FIXED
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../images/logo.png';
 
+/* ------------------------------------------------------------------ */
+/*  styled components                                                 */
+/* ------------------------------------------------------------------ */
 
-
-const HeaderWrapper = styled.div`
+const Wrapper = styled.header`
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: rgba(92, 88, 88, 0.4);
-  color: white;
-  backdrop-filter: blur(6px);
+  inset: 0 0 auto 0;               /* topp, høyre, bunn, venstre */
+  height: 70px;
+  padding: 0 30px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
-  font-size: 1.4rem;
-  font-weight: bold;
-  z-index: 1500; /* Lower than dropdown but above page */
+
+  background: rgba(25, 25, 25, 0.45);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+  color: #fff;
+  z-index: 1500;
 `;
 
-const Brand = styled.div`
+const Brand = styled(Link)`
   display: flex;
   align-items: center;
   gap: 10px;
+  color: inherit;
+  text-decoration: none;
 
-  img {
-    height: 60px;
-    width: auto;
-  }
+  img { height: 60px; }
 `;
 
-const Spacer = styled.div`
-  height: 0px;
+const NavLinks = styled.nav`
+  display: flex;
+  gap: 26px;
+
+  a {
+    font-weight: 600;
+    color: inherit;
+    text-decoration: none;
+    transition: opacity .2s;
+
+    &:hover { opacity: .75; }
+  }
+
+  /* Skjul på små skjermer – vi viser hamburger i stedet */
+  @media (max-width: 820px) { display: none; }
 `;
 
 const Icons = styled.div`
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 20px;
 `;
 
 const MenuToggle = styled.div`
+  font-size: 30px;
   cursor: pointer;
-  font-size: 24px;
+  user-select: none;
+
+  /* Vis kun på små skjermer */
+  @media (min-width: 821px) { display: none; }
 `;
 
-const DropdownMenu = styled.div`
-  position: fixed; 
-  top: 60px;
+const Dropdown = styled.div`
+  position: fixed;
+  top: 78px;
   right: 30px;
-  background: rgba(51, 48, 48, 0.95);
-  color: white;
-  border-radius: 10px;
-  padding: 10px 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+
   display: flex;
   flex-direction: column;
-  min-width: 180px;
-  z-index: 2000; /* must be higher than HeroSection or floating buttons */
+  min-width: 200px;
+
+  background: rgba(32, 32, 32, 0.96);
+  border-radius: 10px;
+  padding: 14px 0;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, .45);
+  z-index: 2000;
 
   a {
-    padding: 10px 20px;
-    color: white;
+    padding: 12px 24px;
+    color: #fff;
     text-decoration: none;
-    transition: background 0.2s ease;
+    transition: background .2s;
 
-    &:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
+    &:hover { background: rgba(255, 255, 255, .12); }
   }
 `;
 
-const RightArea = styled.div`
+const AdminAvatar = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 6px;
+  cursor: pointer;
 `;
 
-const Avatar = styled.div`
-  width: 32px;
-  height: 32px;
-  background: #ff9d00;
-  border-radius: 50%;
+const SubMenu = styled.div`
+  position: absolute;
+  top: 40px;
+  right: 0;
+
   display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-weight: bold;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 170px;
+
+  background: #282828;
+  border-radius: 8px;
+  padding: 12px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .45);
+  z-index: 3000;
+
+  a, button{
+    background: none;
+    border: none;
+    color: #fff;
+    padding: 9px 20px;
+    text-align: left;
+    text-decoration: none;
+    font-size: .95rem;
+    cursor: pointer;
+    transition: background .2s;
+  }
+  a:hover, button:hover{ background: rgba(255,255,255,.10); }
 `;
 
-const Name = styled.span`
-  color: white;
-  font-size: 1rem;
-`;
+/* ------------------------------------------------------------------ */
+/*  component                                                         */
+/* ------------------------------------------------------------------ */
 
+const Header: React.FC = () => {
+  const [showMobile, setShowMobile] = useState(false);
+  const [showAdmin,  setShowAdmin]  = useState(false);
 
-const Header = () => {
-  const [showMenu, setShowMenu] = useState(false);
-  const [showAdminDropdown, setShowAdminDropdown] = useState(false);
-  const navigate = useNavigate();
-  const token = localStorage.getItem('token');
-  const adminName = localStorage.getItem('adminName');
+  const navigate   = useNavigate();
+  const token      = localStorage.getItem('token');
+  const adminName  = localStorage.getItem('adminName') ?? 'Admin';
 
-  const handleLogout = () => {
+  const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('adminName');
     navigate('/login');
   };
 
+  /* sikre at bare én meny er åpen om gangen */
+  const toggleMobile = () => { setShowAdmin(false);  setShowMobile(p => !p); };
+  const toggleAdmin  = () => { setShowMobile(false); setShowAdmin (p => !p); };
+
   return (
     <>
-      <HeaderWrapper>
-        <Link to="/home" style={{ textDecoration: 'none', color: 'white' }}>
-        <Brand>
-            <img src={logo} alt="Momona Klubb Logo" />
-            Momona Klubb
+      <Wrapper>
+        {/* --------- Logo --------- */}
+        <Brand to="/home">
+          <img src={logo} alt="Momona Klubb logo" />
+          Momona&nbsp;Klubb
         </Brand>
-        </Link>
 
-
-        <Icons>
-  {/* Ikoner i midten */}
-  <span>📍</span>
-  <span>🍽️</span>
-  <span>📞</span>
-
-  {/* Login eller Admin */}
-  {token ? (
-    <div style={{ position: 'relative' }}>
-      <div
-        onClick={() => {
-          setShowMenu(false);
-          setShowAdminDropdown(prev => !prev);
-        }}
-        style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}
-      >
-        <span>🧑</span>
-        <span>{adminName}</span>
-      </div>
-
-      {showAdminDropdown && (
-        <div style={{
-          position: 'absolute',
-          top: '35px',
-          right: 0,
-          background: '#333',
-          padding: '10px',
-          borderRadius: '8px',
-          zIndex: 3000
-        }}>
-          <button onClick={handleLogout} style={{ background: 'none', border: 'none', color: 'white', cursor: 'pointer' }}>
-            🚪 Logout
-          </button>
-        </div>
-      )}
-    </div>
-  ) : (
-    <span
-      style={{ cursor: 'pointer' }}
-      onClick={() => {
-        setShowAdminDropdown(false);
-        setShowMenu(false);
-        window.location.href = '/login';
-      }}
-      
-    >
-      🔐
-    </span>
-  )}
-
-  {/* Hamburger */}
-  <MenuToggle
-    onClick={() => {
-      setShowAdminDropdown(false);
-      setShowMenu(prev => !prev);
-    }}
-  >
-    &#9776;
-  </MenuToggle>
-</Icons>
-
-
-
-      </HeaderWrapper>
-
-      {showMenu && (
-        <DropdownMenu>
-          
+        {/* --------- Desktop-nav --------- */}
+        <NavLinks>
           <Link to="/home">Home</Link>
           <Link to="/menu">Menu</Link>
-          <Link to="/user">Register</Link>
+          <Link to="/games">Games</Link>
+          <Link to="/events">Events</Link>
           <Link to="/about">About</Link>
           <Link to="/contact">Contact</Link>
-        </DropdownMenu>
+        </NavLinks>
+
+        {/* --------- Ikoner / hamburger --------- */}
+        <Icons>
+          {token ? (
+            <div style={{ position: 'relative' }}>
+              <AdminAvatar onClick={toggleAdmin}>
+                <span role="img" aria-label="admin">👤</span>
+                <span>{adminName}</span>
+              </AdminAvatar>
+
+              {showAdmin && (
+                <SubMenu>
+                  <Link to="/admin">Dashboard</Link>
+                  <Link to="/admin/menu">Meny-admin</Link>
+                  <Link to="/admin/events">Events-admin</Link>
+                  <button onClick={logout}>🚪 Logout</button>
+                </SubMenu>
+              )}
+            </div>
+          ) : (
+            <span
+              style={{ cursor: 'pointer' }}
+              onClick={() => navigate('/login')}
+              role="img"
+              aria-label="login"
+            >🔐</span>
+          )}
+
+          <MenuToggle onClick={toggleMobile}>
+            &#9776;
+          </MenuToggle>
+        </Icons>
+      </Wrapper>
+
+      {/* --------- Mobil-dropdown --------- */}
+      {showMobile && (
+        <Dropdown>
+          <Link to="/home"    onClick={() => setShowMobile(false)}>Home</Link>
+          <Link to="/menu"    onClick={() => setShowMobile(false)}>Menu</Link>
+          <Link to="/games"   onClick={() => setShowMobile(false)}>Games</Link>
+          <Link to="/events"  onClick={() => setShowMobile(false)}>Events</Link>
+          <Link to="/about"   onClick={() => setShowMobile(false)}>About</Link>
+          <Link to="/contact" onClick={() => setShowMobile(false)}>Contact</Link>
+        </Dropdown>
       )}
 
-      <Spacer />
+      {/* Spacer: sørger for at innholdet starter under headeren */}
+      <div style={{ height: 70 }} />
     </>
   );
 };

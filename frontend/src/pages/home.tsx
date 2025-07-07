@@ -9,23 +9,23 @@ const GlobalAnimations = createGlobalStyle`
   @keyframes float1 {
     0%   { transform: translate(0px, 0px); }
     25%  { transform: translate(10px, -20px); }
-    50%  { transform: translate(-10px, 60px); }
-    75%  { transform: translate(115px, 5px); }
+    50%  { transform: translate(-10px, 0px); }
+    75%  { transform: translate(15px, 5px); }
     100% { transform: translate(0px, 0px); }
   }
 
   @keyframes float2 {
     0%   { transform: translate(0px, 0px); }
     20%  { transform: translate(-15px, -10px); }
-    40%  { transform: translate(10px, 65px); }
+    40%  { transform: translate(10px, 25px); }
     60%  { transform: translate(-10px, 5px); }
-    80%  { transform: translate(115px, -15px); }
+    80%  { transform: translate(15px, -15px); }
     100% { transform: translate(0px, 0px); }
   }
 
   @keyframes float3 {
     0%   { transform: translate(0px, 0px); }
-    33%  { transform: translate(120px, 60px); }
+    33%  { transform: translate(20px, 20px); }
     66%  { transform: translate(-15px, -10px); }
     100% { transform: translate(0px, 0px); }
   }
@@ -33,7 +33,7 @@ const GlobalAnimations = createGlobalStyle`
 
 /* ---------- layout ---------- */
 const Spacer = styled.div`
-  height: 60px;
+  height: 0px;
 `;
 
 const HeroSection = styled.section<{ bg: string }>`

@@ -6,6 +6,19 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
   }
+      /* ---- eksisterende global css ---- */
+
+  /*  NYTT: sørg for at ingen elementer kan gi horisontal scroll  */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
 `;
 
 export default GlobalStyle;
+

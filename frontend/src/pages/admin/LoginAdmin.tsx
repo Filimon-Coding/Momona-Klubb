@@ -101,13 +101,13 @@ export default function AdminLogin() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, passwordHash })
     });
-    if (res.ok) {
+    if (res.ok){
       const data = await res.json();
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('adminName', data.firstName); // ✅ Save admin name
-      nav('/admin');
-      
-    } else {
+      localStorage.setItem('token',data.token);
+      localStorage.setItem('adminName',data.firstName);
+      nav('/admin');              // Til dashbordet
+    }
+ else {
       alert('Feil brukernavn/passord');
     }
   };

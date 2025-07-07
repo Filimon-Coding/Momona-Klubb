@@ -8,51 +8,61 @@ import ContactPage from './pages/contact';
 import GamesPage from './pages/games'
 import EventsPage from './pages/events'
 
-import UserPage from './pages/user';
+import AdminDashboard from './pages/admin/DashboardAdmin'; 
 import RequireAuth from './utils/RequireAuth';
-import AdminPage from './pages/admin/menuAdmin';
-import Login from './pages/admin/login';
-import AdminRegister from './pages/admin/adminRegister';
-import EventsAdmin from './pages/admin/EventsAdmin';
+import MenuAdmin      from './pages/admin/MenuAdmin';
+import Login from './pages/admin/LoginAdmin';
+import AdminRegister from './pages/admin/RegisterAdmin';
+import EventsAdmin    from './pages/admin/EventsAdmin';
 
 function App() {
   return (
     <Router>
-      <GlobalStyle /> {/* <-- apply global styles */}
+      <GlobalStyle/>
+
       <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/home" element={<MainPage />} />
-        <Route path="/menu" element={<MenuPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/user" element={<UserPage />} />
-        <Route path="/games" element={<GamesPage />} />
-        <Route path="/events" element={<EventsPage />} />
+        {/* ----------------  OFFENTLIG  --------------- */}
+        <Route path="/"        element={<MainPage/>}/>
+        <Route path="/home"    element={<MainPage/>}/>
+        <Route path="/menu"    element={<MenuPage/>}/>
+        <Route path="/games"   element={<GamesPage/>}/>
+        <Route path="/events"  element={<EventsPage/>}/>
+        <Route path="/about"   element={<AboutPage/>}/>
+        <Route path="/contact" element={<ContactPage/>}/>
 
-        
-        <Route path="/admin" element={
-          <RequireAuth>
-          <AdminPage />
-          </RequireAuth>
-        } />
-
-
-
-        <Route path="/login" element={<Login />} />
-        <Route path="/admin-register" element={<AdminRegister />} />
+        {/* ----------------  ADMIN  ------------------- */}
         <Route
-            path="/admin/events"
-            element={
-              <RequireAuth>
-                <EventsAdmin/>
-              </RequireAuth>
-            }
-          />
+          path="/admin"
+          element={
+            <RequireAuth>
+              <AdminDashboard/>
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/admin/menu"
+          element={
+            <RequireAuth>
+              <MenuAdmin/>
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/admin/events"
+          element={
+            <RequireAuth>
+              <EventsAdmin/>
+            </RequireAuth>
+          }
+        />
 
-
+        {/* ----------------  AUTH  -------------------- */}
+        <Route path="/login"           element={<Login/>}/>
+        <Route path="/admin-register"  element={<AdminRegister/>}/>
       </Routes>
     </Router>
   );
 }
+
 
 export default App;

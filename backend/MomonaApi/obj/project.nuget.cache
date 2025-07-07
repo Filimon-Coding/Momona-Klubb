@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "t5/gZ3NONcJVtTl0bvTquPEYdcD26gkcCN0FNYjoK5xc5KqQYBz0wZ9PpLzzRUtUt2jaTIKKRM6SZBEiv6FEPA==",
-  "success": false,
+  "dgSpecHash": "W2fz7FqUgaZL8vPK4JK4CiiKRcU19OkXaGmqN0a/6Qrw2wsBIN6ojLZSoKwq4MsKVL5MFbRXB6RFvf+OTtFxSw==",
+  "success": true,
   "projectFilePath": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/MomonaApi.csproj",
   "expectedPackageFiles": [
     "/home/neov/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
@@ -67,19 +67,7 @@
     "/home/neov/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "/home/neov/.nuget/packages/system.text.encodings.web/9.0.6/system.text.encodings.web.9.0.6.nupkg.sha512",
     "/home/neov/.nuget/packages/system.text.json/9.0.6/system.text.json.9.0.6.nupkg.sha512",
-    "/home/neov/.nuget/packages/system.threading.channels/7.0.0/system.threading.channels.7.0.0.nupkg.sha512",
-    "/home/neov/.nuget/packages/microsoft.netcore.app.ref/8.0.17/microsoft.netcore.app.ref.8.0.17.nupkg.sha512",
-    "/home/neov/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.17/microsoft.aspnetcore.app.ref.8.0.17.nupkg.sha512"
+    "/home/neov/.nuget/packages/system.threading.channels/7.0.0/system.threading.channels.7.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1101",
-      "level": "Error",
-      "message": "Unable to find package Microsoft.NETCore.App.Host.ubuntu.24.04-x64. No packages exist with this id in source(s): nuget.org",
-      "libraryId": "Microsoft.NETCore.App.Host.ubuntu.24.04-x64",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  "logs": []
 }
