@@ -44,11 +44,6 @@
 * `DELETE /api/menuitems/{id}` – Delete item (admin only)
 * Frontend `/menu` page displays menu dynamically
 
-### ✅ User Registration (Simple Demo)
-
-* `POST /api/user` – Register user data from form
-* `GET /api/user` – Returns all users
-* `/user` page contains a basic form
 
 ### ✅ Admin Authentication
 
