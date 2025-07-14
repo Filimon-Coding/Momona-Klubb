@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Header  from '../components/header/header';
 import Footer  from '../components/footer/footer';
-import heroImg from '../components/images/gift-habeshaw-bHJrg5pufEM-unsplash.jpg';
+import heroImg from '../components/images/Coffee_ceremony_of_Ethiopia_and_Eritrea_4.jpg';
 
 /* ---------- styled ---------- */
 const Spacer = styled.div`height:60px;`;
