@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "XkVkMyv73EazGWebF9i5NnnloxWjzEI/VVqRjlTNdpo=",
+  "Hash": "ZbRgRgvt8zOi82B5Lglh5U1agBzVYH2pbFx8i1aGYkM=",
   "Source": "MomonaApi",
   "BasePath": "_content/MomonaApi",
   "Mode": "Default",
@@ -547,6 +547,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/dc0dfa26-3002-47e5-bceb-10b9213d664a.jpg"
+    },
+    {
+      "Identity": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/e0758022-3a96-431a-973e-764a1df58a7d.jpg",
+      "SourceId": "MomonaApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/",
+      "BasePath": "_content/MomonaApi",
+      "RelativePath": "images/e0758022-3a96-431a-973e-764a1df58a7d.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/e0758022-3a96-431a-973e-764a1df58a7d.jpg"
     },
     {
       "Identity": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/e326739d-bf4b-453c-994b-3695b3d16646.jpg",
