@@ -206,7 +206,11 @@ export default function MenuPage() {
     setEditedItem({});
   };
 
-  const handleDelete = async (id: number) => {
+    const handleDelete = async (id: number) => {
+      const sure = window.confirm(
+        'Delete this menu item permanently?'
+      );
+        if (!sure) return; 
     const res = await fetch(`http://localhost:5272/api/menuitems/${id}`, {
       method: 'DELETE',
       headers: { 'Authorization': `Bearer ${token}` }

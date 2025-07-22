@@ -80,6 +80,10 @@ export default function EventsPage() {
   };
   const toggleHide  = (e:Event)=> updateEvent({...e,isHidden:!e.isHidden},e.id);
   const delEvent    = async(id:number)=>{
+    const sure = window.confirm(
+      'Delete this Event permanetly?'
+      );
+      if (!sure) return;
     const ok = await fetch(`${API}/${id}`, { method: 'DELETE', headers: { Authorization: `Bearer ${token}` } });
     if(ok) fetchEvents();
   };

@@ -87,13 +87,23 @@ export default function GamesPage() {
   };
 
   const removePerson = async (id: number, qId: string) => {
+    const confirm = window.confirm(
+      'Are you sure you want to remove this person from the queue?'
+    );
+  if (!confirm) return; 
+    
     const ok = await fetch(`http://localhost:5272/api/gamestatus/${id}/remove`, {
       method: 'POST',
-      headers: { 'Content-Type': 'text/plain', Authorization: `Bearer ${token}` },
-      body: qId
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ qId }),
     }).then(r => r.ok);
+
     ok ? fetchGames() : alert('Could not remove this person.');
   };
+
 
   const activateNext = async (id: number) => {
     const ok = await fetch(`http://localhost:5272/api/gamestatus/${id}/activate`, {

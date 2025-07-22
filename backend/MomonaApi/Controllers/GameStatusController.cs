@@ -75,25 +75,23 @@ namespace MomonaApi.Controllers
 
 
                 // [POST] /api/gamestatus/{id}/remove
-            [Authorize(Roles = "Admin")]
-            [HttpPost("{id}/remove")]
-                public IActionResult RemoveFromQueue(int id, [FromBody] string qId)
-                {
-                    var game = _context.GameStatuses.Find(id);
-                    if (game == null) return NotFound();
+        public record RemoveRequest(string QId);
 
-                    var updatedQueue = game.Queue.Where(entry => {
-                        var parts = entry.Split("::");
-                        return parts.Length != 2 || parts[1] != qId;
-                    }).ToList();
+        [Authorize(Roles = "Admin")]
+        [HttpPost("{id}/remove")]
+        public IActionResult RemoveFromQueue(int id, [FromBody] RemoveRequest req)
+        {
+            var game = _context.GameStatuses.Find(id);
+            if (game == null) return NotFound();
 
-                    if (updatedQueue.Count == game.Queue.Count)
-                        return BadRequest("User not found in queue");
+            var newQueue = game.Queue.Where(e => e.Split("::")[1] != req.QId).ToList();
+            if (newQueue.Count == game.Queue.Count)
+                return BadRequest("User not found in queue");
 
-                    game.Queue = updatedQueue;
-                    _context.SaveChanges();
-                    return Ok(game);
-                }
+            game.Queue = newQueue;
+            _context.SaveChanges();
+            return Ok(game);
+        }
 
 
 
