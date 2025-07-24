@@ -8,6 +8,10 @@ messages=(
     "Endring basert fra nettleser/items"
     "Oppdatert"
     "Forbedret"
+    "opp før endring"
+    "Før jeg går videre"
+
+
 )
 
 

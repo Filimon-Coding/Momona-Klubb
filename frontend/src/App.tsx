@@ -7,6 +7,7 @@ import AboutPage from './pages/about';
 import ContactPage from './pages/contact';
 import GamesPage from './pages/games'
 import EventsPage from './pages/events'
+import SportsPage from './pages/sports';
 
 import AdminDashboard from './pages/admin/DashboardAdmin'; 
 import RequireAuth from './utils/RequireAuth';
@@ -28,6 +29,7 @@ function App() {
         <Route path="/events"  element={<EventsPage/>}/>
         <Route path="/about"   element={<AboutPage/>}/>
         <Route path="/contact" element={<ContactPage/>}/>
+        <Route path="/sports" element={<SportsPage/>}/>
 
         {/* ----------------  ADMIN  ------------------- */}
         <Route

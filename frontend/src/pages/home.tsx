@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import Header from '../components/header/header';
 import Footer from '../components/footer/footer';
-import heroImage from '../components/images/gwenn-klabbers-2X69LtzVnQE-unsplash.jpg';
+import heroImage from '../components/images/8994ba68-3a20-4a1e-87a0-2c67e8aa1ebe.png';
 
 /* ---------- global animations ---------- */
 const GlobalAnimations = createGlobalStyle`
@@ -134,6 +134,7 @@ const MainPage = () => {
           <FloatingButton href="/events"  top="65%" left="40%" animationName="float3" animationDelay="0.6s" shape="square">Events</FloatingButton>
           <FloatingButton href="/about"   top="30%" left="75%" animationName="float2" animationDelay="0.3s">About</FloatingButton>
           <FloatingButton href="/contact" top="70%" left="80%" animationName="float1" animationDelay="1s" shape="square">Contact</FloatingButton>
+          <FloatingButton href="/sports" top="20%" left="40%" animationName="float1" animationDelay="1s"> Sport</FloatingButton>
         </ButtonWrapper>
       </HeroSection>
       <Footer />
