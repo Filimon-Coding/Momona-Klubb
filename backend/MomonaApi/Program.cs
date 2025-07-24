@@ -79,6 +79,21 @@ using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     db.Database.EnsureCreated();
+    
+    // Program.cs – etter db.Database.EnsureCreated();
+if (!db.Admins.Any(a => a.Email == "super@momona.no"))
+{
+    var hasher = new PasswordHelper();
+    db.Admins.Add(new Admin
+    {
+        Email       = "super@momona.no",
+        FirstName   = "Super",
+        LastName    = "Admin",
+        PasswordHash = hasher.HashPassword("SuperSecret123!")
+    });
+    db.SaveChanges();
+}
+
 
     if (!db.MenuItems.Any())
     {
@@ -90,14 +105,14 @@ using (var scope = app.Services.CreateScope())
         new MenuItem { Name = "Veggie Burger", Description = "Plant-based burger with lettuce, tomato, and avocado.", Category = "Main", Image = "https://images.unsplash.com/photo-1550547660-d9450f859349", Price = 139 },
         new MenuItem { Name = "Pasta Alfredo", Description = "Creamy alfredo pasta with mushrooms and parmesan.", Category = "Main", Image = "https://images.unsplash.com/photo-1606112219348-204d7d8b94ee", Price = 159 },
         new MenuItem { Name = "Tibs (Ethiopian Stir Fry)", Description = "Tender beef cubes sautéed with onion, garlic, and pepper.", Category = "Main", Image = "https://images.unsplash.com/photo-1606112219348-204d7d8b94ee", Price = 179 },
-        
+
         // Drinks
         new MenuItem { Name = "Mango Juice", Description = "Fresh mango juice, served cold.", Category = "Drinks", Image = "https://images.unsplash.com/photo-1615485293112-1a4c8d64c1ee", Price = 49 },
         new MenuItem { Name = "Coca Cola", Description = "Chilled bottle of Coca Cola.", Category = "Drinks", Image = "https://images.unsplash.com/photo-1600891964599-f61ba0e24092", Price = 35 },
         new MenuItem { Name = "Orange Fanta", Description = "Refreshing sparkling orange soda.", Category = "Drinks", Image = "https://images.unsplash.com/photo-1615485293112-1a4c8d64c1ee", Price = 35 },
         new MenuItem { Name = "Water Bottle", Description = "Still mineral water, 0.5L.", Category = "Drinks", Image = "https://images.unsplash.com/photo-1615485293112-1a4c8d64c1ee", Price = 25 },
         new MenuItem { Name = "Cappuccino", Description = "Hot cappuccino with milk foam and cinnamon.", Category = "Drinks", Image = "https://images.unsplash.com/photo-1615485293112-1a4c8d64c1ee", Price = 42 },
-        
+
         // Desserts
         new MenuItem { Name = "Tiramisu", Description = "Classic Italian dessert with coffee and mascarpone.", Category = "Desserts", Image = "https://images.unsplash.com/photo-1606112219348-204d7d8b94ee", Price = 69 },
         new MenuItem { Name = "Baklava", Description = "Layered pastry with nuts and honey.", Category = "Desserts", Image = "https://images.unsplash.com/photo-1606112219348-204d7d8b94ee", Price = 55 },
