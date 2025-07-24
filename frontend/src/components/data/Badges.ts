@@ -1,4 +1,3 @@
-// src/data/badgeMap.ts
 export const badgeMap: Record<string, string> = {
   /* ---------- Premier League ---------- */
   "Arsenal":           "/logos/England - Premier League/Arsenal FC.png",
