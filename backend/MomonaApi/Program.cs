@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using MomonaApi.DAL;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using MomonaApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAuthorization();
@@ -35,6 +36,26 @@ builder.Services.AddAuthentication("Bearer")
                 System.Text.Encoding.UTF8.GetBytes("dsfkjdkjfDSDDsxkcxnc zmxSADASDajhk!!%#ldfjdfjkjdfSdfsQQWeqwexczcQQQAsdpn!#"))
         };
     });
+
+    const string SPORTSDB_KEY = "123";                    // ← din nye nøkkel
+
+builder.Services.AddHttpClient<IFootballDataClient, SportsDbClient>(c =>
+{
+    // NB! nøkkelen står rett etter /json/
+    c.BaseAddress = new Uri($"https://www.thesportsdb.com/api/v1/json/{SPORTSDB_KEY}/");
+});
+
+builder.Services.AddDbContext<AppDbContext>(opt =>
+    opt.UseSqlite("Data Source=menu.db"));
+
+builder.Services.AddScoped<IMatchService, MatchService>();
+
+builder.Services.AddHttpClient<IFootballDataClient, SportsDbClient>(c =>
+{
+    const string SPORTSDB_KEY = "123";
+    c.BaseAddress = new Uri($"https://www.thesportsdb.com/api/v1/json/{SPORTSDB_KEY}/");
+});
+
 
 
 

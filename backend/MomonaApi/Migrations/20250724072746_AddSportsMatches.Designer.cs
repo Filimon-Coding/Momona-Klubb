@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MomonaApi.DAL;
 
@@ -10,9 +11,11 @@ using MomonaApi.DAL;
 namespace MomonaApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250724072746_AddSportsMatches")]
+    partial class AddSportsMatches
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.6");
@@ -145,7 +148,7 @@ namespace MomonaApi.Migrations
                             FirstName = "Super",
                             IsAdmin = true,
                             LastName = "Admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAENvI2r2qg2cKq1g8m0gqgC3m7yqQyqvCwq2pK0qg1g=="
+                            PasswordHash = "89U2yP02kOs29wMMdlBHjQ==.YMxtV6XPGdlF+5rKfnIWHrIAI0TfVjih5vdefN73nTA="
                         });
                 });
 

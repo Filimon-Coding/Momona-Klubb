@@ -16,6 +16,9 @@ namespace MomonaApi.DAL
         
         public DbSet<Event>      Events       { get; set; }
 
+        public DbSet<SportsMatch> SportsMatches => Set<SportsMatch>();
+
+
         /* ------------ seed data (ONE override only!) ------------ */
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -40,15 +43,15 @@ namespace MomonaApi.DAL
                     IsHidden = false
                 }
             );
-            
+
             modelBuilder.Entity<Admin>().HasData(
                 new Admin
                 {
-                    Id      = 1,
-                    Email        = "super@momona.no",
-                    FirstName    = "Super",
-                    LastName     = "Admin",
-                    PasswordHash = PasswordHelper.HashPassword("SuperSecret123!")
+                    Id = 1,
+                    Email = "super@momona.no",
+                    FirstName = "Super",
+                    LastName = "Admin",
+                    PasswordHash = "AQAAAAEAACcQAAAAENvI2r2qg2cKq1g8m0gqgC3m7yqQyqvCwq2pK0qg1g=="
                 });
 
         }
