@@ -51,7 +51,7 @@ namespace MomonaApi.DAL
                     Email = "super@momona.no",
                     FirstName = "Super",
                     LastName = "Admin",
-                    PasswordHash = "AQAAAAEAACcQAAAAENvI2r2qg2cKq1g8m0gqgC3m7yqQyqvCwq2pK0qg1g=="
+                    PasswordHash = "AQAAAAEAACcQAAAAENvI2r2qg2cKq1g8m0gqgC3m7yqQyqvCwq2pK0qg1g==" // fikse this later !! På grunn has lagt på forhånd !!! 
                 });
 
         }
