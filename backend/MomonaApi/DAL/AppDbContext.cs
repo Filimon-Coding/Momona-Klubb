@@ -51,7 +51,10 @@ namespace MomonaApi.DAL
                     Email = "super@momona.no",
                     FirstName = "Super",
                     LastName = "Admin", // Må finn noe form autmatiske hashing metoder! som ikke medfører til til 
-                    PasswordHash = "AQAAAAEAACcQAAAAENvI2r2qg2cKq1g8m0gqgC3m7yqQyqvCwq2pK0qg1g==" // fikse this later !! På grunn has lagt på forhånd !!! 
+                   // PasswordHash = "AQAAAAEAACcQAAAAENvI2r2qg2cKq1g8m0gqgC3m7yqQyqvCwq2pK0qg1g==" // fikse this later !! På grunn has lagt på forhånd !!! 
+                    PasswordHash = PasswordHelper.HashPassword("SuperSecret123!")
+
+                    
                 });
 
         }

@@ -80,21 +80,7 @@ using (var scope = app.Services.CreateScope())
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     db.Database.EnsureCreated();
     
-    // Program.cs – etter db.Database.EnsureCreated();
-if (!db.Admins.Any(a => a.Email == "super@momona.no"))
-{
-    var hasher = new PasswordHelper();
-    db.Admins.Add(new Admin
-    {
-        Email       = "super@momona.no",
-        FirstName   = "Super",
-        LastName    = "Admin",
-        PasswordHash = hasher.HashPassword("SuperSecret123!")
-    });
-    db.SaveChanges();
-}
-
-
+    
     if (!db.MenuItems.Any())
     {
         db.MenuItems.AddRange(
