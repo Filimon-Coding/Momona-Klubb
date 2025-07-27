@@ -31,4 +31,4 @@ else
 fi
 
 sleep 60
-done
+done # wtf !! 
