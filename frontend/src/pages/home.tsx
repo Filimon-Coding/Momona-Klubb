@@ -26,7 +26,7 @@ const GlobalAnimations = createGlobalStyle`
   @keyframes float3 {
     0%   { transform: translate(0px, 0px); }
     33%  { transform: translate(20px, 20px); }
-    66%  { transform: translate(-15px, -10px); }
+    66%  { transform: translate(-15px, -15px); }
     100% { transform: translate(0px, 0px); }
   }
 `;
@@ -129,7 +129,7 @@ const MainPage = () => {
       <HeroSection bg={heroImage}>
         <HeroTitle>Welcome to Momona Klubb</HeroTitle>
         <ButtonWrapper>
-          <FloatingButton href="/menu"    top="25%" left="10%" animationName="float1" animationDelay="0s">Menu</FloatingButton>
+          <FloatingButton href="/menu"    top="25%" left="10%" animationName="float1" animationDelay="0s" shape="square">Menu</FloatingButton>
           <FloatingButton href="/games"   top="50%" left="5%"  animationName="float2" animationDelay="1.2s">Games</FloatingButton>
           <FloatingButton href="/events"  top="65%" left="40%" animationName="float3" animationDelay="0.6s" shape="square">Events</FloatingButton>
           <FloatingButton href="/about"   top="30%" left="75%" animationName="float2" animationDelay="0.3s">About</FloatingButton>
