@@ -60,7 +60,8 @@ builder.Services.AddHttpClient<IFootballDataClient, SportsDbClient>(c =>
 
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite("Data Source=menu.db"));
+    options.UseSqlite("Data Source=momona.db"));
+
 
 
 var app = builder.Build();

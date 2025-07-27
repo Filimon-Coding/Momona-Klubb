@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2k/aympeKRe/UlfKcsVGZ2+eYWywRZz2mnTXeMyMWog=",
+  "Hash": "FPDKGgKIuyTqUEnco1NExA3Oye33S5qlnHSiaC/kk7o=",
   "Source": "MomonaApi",
   "BasePath": "_content/MomonaApi",
   "Mode": "Default",
@@ -264,6 +264,25 @@
       "OriginalItemSpec": "wwwroot/images/5a03180a-cbc6-45a0-b211-c77e2578f92e.png"
     },
     {
+      "Identity": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/5c678c7c-643e-4492-b804-3c7831cc5025.jpg",
+      "SourceId": "MomonaApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/",
+      "BasePath": "_content/MomonaApi",
+      "RelativePath": "images/5c678c7c-643e-4492-b804-3c7831cc5025.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/5c678c7c-643e-4492-b804-3c7831cc5025.jpg"
+    },
+    {
       "Identity": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/5fa7c058-8547-49bb-93c7-814c2277077b.jpg",
       "SourceId": "MomonaApi",
       "SourceType": "Discovered",
@@ -319,6 +338,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/68237387-d732-4c28-a589-bd891fdcceaa.jpg"
+    },
+    {
+      "Identity": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/8276c2ce-5b1d-45cb-9be2-8ac9e388c96d.jpeg",
+      "SourceId": "MomonaApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/",
+      "BasePath": "_content/MomonaApi",
+      "RelativePath": "images/8276c2ce-5b1d-45cb-9be2-8ac9e388c96d.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/8276c2ce-5b1d-45cb-9be2-8ac9e388c96d.jpeg"
     },
     {
       "Identity": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/82ca55a7-1f37-4cac-981a-d29d2d90bda2.jpg",
@@ -566,6 +604,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/db852f08-2e8e-4a75-b9c1-d11b117be708.jpg"
+    },
+    {
+      "Identity": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/dbc57ae0-4dd4-41ec-9ba1-302fab4c6bb2.jpg",
+      "SourceId": "MomonaApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/",
+      "BasePath": "_content/MomonaApi",
+      "RelativePath": "images/dbc57ae0-4dd4-41ec-9ba1-302fab4c6bb2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/dbc57ae0-4dd4-41ec-9ba1-302fab4c6bb2.jpg"
     },
     {
       "Identity": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/dc0dfa26-3002-47e5-bceb-10b9213d664a.jpg",
