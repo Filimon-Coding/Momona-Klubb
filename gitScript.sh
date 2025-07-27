@@ -32,3 +32,4 @@ fi
 
 sleep 60
 done # wtf !! 
+# wtf sdasd
