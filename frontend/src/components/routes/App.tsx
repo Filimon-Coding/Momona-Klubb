@@ -1,19 +1,19 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import GlobalStyle from './GlobalStyle'; // <-- import it here
-import MainPage from './pages/home';
-import MenuPage from './pages/menu';
-import AboutPage from './pages/about';
-import ContactPage from './pages/contact';
-import GamesPage from './pages/games'
-import EventsPage from './pages/events'
-import SportsPage from './pages/sports';
+import GlobalStyle from '../../GlobalStyle'; // <-- import it here
+import MainPage from '../../pages/home';
+import MenuPage from '../../pages/menu';
+import AboutPage from '../../pages/about';
+import ContactPage from '../../pages/contact';
+import GamesPage from '../../pages/games'
+import EventsPage from '../../pages/events'
+import SportsPage from '../../pages/sports';
 
-import AdminDashboard from './pages/admin/DashboardAdmin'; 
-import RequireAuth from './utils/RequireAuth';
-import MenuAdmin      from './pages/admin/MenuAdmin';
-import Login from './pages/admin/LoginAdmin';
-import EventsAdmin    from './pages/admin/EventsAdmin';
+import AdminDashboard from '../../pages/admin/DashboardAdmin'; 
+import RequireAuth from '../../utils/RequireAuth';
+import MenuAdmin      from '../../pages/admin/MenuAdmin';
+import Login from '../../pages/admin/LoginAdmin';
+import EventsAdmin    from '../../pages/admin/EventsAdmin';
 
 function App() {
   return (
