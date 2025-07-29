@@ -2,16 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 using MomonaApi.DAL;
 using MomonaApi.Model;
+using MomonaApi.Interfaces;
+
 
 namespace MomonaApi.Services;
-
-public interface IMatchService
-{
-    Task<IEnumerable<SportsMatchDto>> GetUpcomingAsync(string league, bool includeHidden);
-    Task<SportsMatchDto> CreateAsync(SportsMatchDto dto);
-    Task UpdateAsync(int id, SportsMatchDto dto);
-    Task DeleteAsync(int id);
-}
 
 public class MatchService : IMatchService
 {

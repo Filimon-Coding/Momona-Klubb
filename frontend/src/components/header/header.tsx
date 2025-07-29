@@ -164,7 +164,8 @@ const Header: React.FC = () => {
         <NavLinks>
           <Link to="/home">Home</Link>
           <Link to="/menu">Menu</Link>
-          <Link to="/games">Games</Link>
+          <Link to="/games">Tables</Link>
+          <Link to="/sports">Matches</Link>
           <Link to="/events">Events</Link>
           <Link to="/about">About</Link>
           <Link to="/contact">Contact</Link>
@@ -200,7 +201,8 @@ const Header: React.FC = () => {
         <Dropdown>
           <Link to="/home"    onClick={() => setShowMobile(false)}>Home</Link>
           <Link to="/menu"    onClick={() => setShowMobile(false)}>Menu</Link>
-          <Link to="/games"   onClick={() => setShowMobile(false)}>Games</Link>
+          <Link to="/games"   onClick={() => setShowMobile(false)}>Tables</Link>
+          <Link to="/sports"   onClick={() => setShowMobile(false)}>Matches</Link>          
           <Link to="/events"  onClick={() => setShowMobile(false)}>Events</Link>
           <Link to="/about"   onClick={() => setShowMobile(false)}>About</Link>
           <Link to="/contact" onClick={() => setShowMobile(false)}>Contact</Link>

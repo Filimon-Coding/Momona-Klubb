@@ -4,6 +4,8 @@ using MomonaApi.DAL;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using MomonaApi.Services;
+using MomonaApi.Interfaces;
+
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAuthorization();

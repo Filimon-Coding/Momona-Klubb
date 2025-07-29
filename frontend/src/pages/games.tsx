@@ -129,7 +129,7 @@ export default function GamesPage() {
       <Header />
       <Section bg={bgImage}>
         <Container>
-          <h1>🎯 Games & Availability</h1>
+          <h1>🎯 Tables & Availability</h1>
           <SubNote>
             <strong> Join the queue to reserve a table. Admins can adjust capacity and manage the queue. </strong>
           </SubNote>

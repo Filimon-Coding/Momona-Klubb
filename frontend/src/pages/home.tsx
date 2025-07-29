@@ -76,9 +76,9 @@ const FloatingButton = styled.a<{
   position: absolute;
   top: ${p => p.top};
   left: ${p => p.left};
-  width: ${p => (p.shape === 'square' ? '120px' : '100px')};
-  height: ${p => (p.shape === 'square' ? '120px' : '100px')};
-  border-radius: ${p => (p.shape === 'square' ? '10px' : '50%')};
+  width: ${p => (p.shape === 'square' ? '120px' : '122px')};
+  height: ${p => (p.shape === 'square' ? '120px' : '115px')};
+  border-radius: ${p => (p.shape === 'square' ? '15px' : '50%')};
   background: rgba(26, 25, 25, 0.2);
   border: 4.5px solid white;
   color: rgb(241, 246, 248);
@@ -130,11 +130,12 @@ const MainPage = () => {
         <HeroTitle>Welcome to Momona Klubb</HeroTitle>
         <ButtonWrapper>
           <FloatingButton href="/menu"    top="25%" left="10%" animationName="float1" animationDelay="0s" shape="square">Menu</FloatingButton>
-          <FloatingButton href="/games"   top="50%" left="5%"  animationName="float2" animationDelay="1.2s">Games</FloatingButton>
+          <FloatingButton href="/games"   top="50%" left="5%"  animationName="float2" animationDelay="1.2s">Tables</FloatingButton>
+          <FloatingButton href="/sports" top="20%" left="40%" animationName="float1" animationDelay="1s"> Matches</FloatingButton>
           <FloatingButton href="/events"  top="65%" left="40%" animationName="float3" animationDelay="0.6s" shape="square">Events</FloatingButton>
           <FloatingButton href="/about"   top="30%" left="75%" animationName="float2" animationDelay="0.3s">About</FloatingButton>
           <FloatingButton href="/contact" top="70%" left="80%" animationName="float1" animationDelay="1s" shape="square">Contact</FloatingButton>
-          <FloatingButton href="/sports" top="20%" left="40%" animationName="float1" animationDelay="1s"> Sport</FloatingButton>
+
         </ButtonWrapper>
       </HeroSection>
       <Footer />
