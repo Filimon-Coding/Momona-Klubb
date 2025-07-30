@@ -135,7 +135,6 @@ const MainPage = () => {
           <FloatingButton href="/events"  top="65%" left="40%" animationName="float3" animationDelay="0.6s" shape="square">Events</FloatingButton>
           <FloatingButton href="/about"   top="30%" left="75%" animationName="float2" animationDelay="0.3s">About</FloatingButton>
           <FloatingButton href="/contact" top="70%" left="80%" animationName="float1" animationDelay="1s" shape="square">Contact</FloatingButton>
-
         </ButtonWrapper>
       </HeroSection>
       <Footer />

@@ -55,7 +55,18 @@ namespace MomonaApi.DAL
                     PasswordHash = PasswordHelper.HashPassword("SuperSecret123!")
 
                     
-                });
+                },
+                
+                
+                new Admin
+                {
+                    Id           = 2,
+                    Email        = "manager@momona.no",
+                    FirstName    = "Site",
+                    LastName     = "Manager",
+                    PasswordHash = PasswordHelper.HashPassword("ManagerSecret456!")
+                }
+            );
 
         }
 
