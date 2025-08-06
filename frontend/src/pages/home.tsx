@@ -76,7 +76,7 @@ const FloatingButton = styled.a<{
   position: absolute;
   top: ${p => p.top};
   left: ${p => p.left};
-  width: ${p => (p.shape === 'square' ? '120px' : '122px')};
+  width: ${p => (p.shape === 'square' ? '120px' : '120px')};
   height: ${p => (p.shape === 'square' ? '120px' : '115px')};
   border-radius: ${p => (p.shape === 'square' ? '15px' : '50%')};
   background: rgba(26, 25, 25, 0.2);
@@ -90,9 +90,12 @@ const FloatingButton = styled.a<{
   backdrop-filter: blur(7px);
   transition: 0.3s ease;
 
+  /* commented out animation for now 
+
   animation: ${p => p.animationName} 10s ease-in-out infinite;
   animation-delay: ${p => p.animationDelay};
 
+  */
   &:hover {
     background: white;
     color: black;
