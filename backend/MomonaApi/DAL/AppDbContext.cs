@@ -36,10 +36,28 @@ namespace MomonaApi.DAL
                 new Event
                 {
                     Id = 1,
-                    Title = "Live Jazz Night",
+                    Title = "Clasic Music - Yemane Baria ",
                     StartsAt = new DateTime(2025, 8, 17, 18, 0, 0, DateTimeKind.Utc),
-                    Description = "Enjoy a smooth evening of live jazz…",
-                    ImageUrl = "/images/jazz.jpg",
+                    Description = "Enjoy a smooth evening of classic music from the one and only Yemane Barya",
+                    ImageUrl = "http://localhost:5272/images/1a31f790-e047-4f92-847e-1e45b5295898.jpeg",
+                    IsHidden = false
+                },
+                new Event
+                {
+                    Id = 2,
+                    Title = "Tour de France Live : Biniam Girmay",
+                    StartsAt = new DateTime(2025, 8, 20, 20, 0, 0, DateTimeKind.Utc),
+                    Description = "Sing your heart out and enjoy snacks with friends!",
+                    ImageUrl = "http://localhost:5272/images/troy-oldham-UWw9OD3pIMo-unsplash.jpg",
+                    IsHidden = false
+                },
+                new Event
+                {
+                    Id = 3,
+                    Title = "Traditional Coffee Ceremony",
+                    StartsAt = new DateTime(2025, 8, 25, 16, 0, 0, DateTimeKind.Utc),
+                    Description = "Experience the beauty of our coffee tradition.",
+                    ImageUrl = "http://localhost:5272/images/jalo-hotel-0fV_upUSaTs-unsplas.jpg",
                     IsHidden = false
                 }
             );

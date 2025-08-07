@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2iNbzd8jh8nr/VoncUebWqz1oz7MlFk5hQdXm5xxfTY=",
+  "Hash": "Pkd3pObYlltaxMcU6ZWJtvwF1Dq5u9EEvomgnyJxxwI=",
   "Source": "MomonaApi",
   "BasePath": "_content/MomonaApi",
   "Mode": "Default",
@@ -34,6 +34,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/089f17c3-3587-44c2-804d-4289b5dc99f3.svg"
+    },
+    {
+      "Identity": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/0f45c47a-8754-4fdb-8af3-11f7a4852d3f.jpg",
+      "SourceId": "MomonaApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/",
+      "BasePath": "_content/MomonaApi",
+      "RelativePath": "images/0f45c47a-8754-4fdb-8af3-11f7a4852d3f.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/0f45c47a-8754-4fdb-8af3-11f7a4852d3f.jpg"
     },
     {
       "Identity": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/144cd504-7296-4207-93b2-3ca0d32c7e17.jpg",
@@ -91,6 +110,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/178924af-1394-41d4-9bea-6c02cdeae0ca.png"
+    },
+    {
+      "Identity": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/1a31f790-e047-4f92-847e-1e45b5295898.jpeg",
+      "SourceId": "MomonaApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/",
+      "BasePath": "_content/MomonaApi",
+      "RelativePath": "images/1a31f790-e047-4f92-847e-1e45b5295898.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/1a31f790-e047-4f92-847e-1e45b5295898.jpeg"
     },
     {
       "Identity": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/224c9a6b-ffab-4bb8-bc4a-931953c5c9fb.jpg",
@@ -186,6 +224,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/2ce128ff-2af9-485d-8d57-339c51d911f6.jpg"
+    },
+    {
+      "Identity": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/30dc5ae4-180b-4cb4-a369-f523512e5e7c.jpg",
+      "SourceId": "MomonaApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/",
+      "BasePath": "_content/MomonaApi",
+      "RelativePath": "images/30dc5ae4-180b-4cb4-a369-f523512e5e7c.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/30dc5ae4-180b-4cb4-a369-f523512e5e7c.jpg"
     },
     {
       "Identity": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/314783eb-f4b0-4c17-8d6a-f92c54535d7d.jpg",
@@ -490,6 +547,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/a3b8a84e-0139-4a74-894e-8da2012c6ad4.jpg"
+    },
+    {
+      "Identity": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/ab67616d0000b273afd6b36f936a0383f867a432.jpeg",
+      "SourceId": "MomonaApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/",
+      "BasePath": "_content/MomonaApi",
+      "RelativePath": "images/ab67616d0000b273afd6b36f936a0383f867a432.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/ab67616d0000b273afd6b36f936a0383f867a432.jpeg"
     },
     {
       "Identity": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/b639d20e-32de-43a8-8782-2dd2594ec821.jpg",
@@ -815,6 +891,25 @@
       "OriginalItemSpec": "wwwroot/images/harris-vo-JpQGEArmG0I-unsplash.jpg"
     },
     {
+      "Identity": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/jalo-hotel-0fV_upUSaTs-unsplas.jpg",
+      "SourceId": "MomonaApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/",
+      "BasePath": "_content/MomonaApi",
+      "RelativePath": "images/jalo-hotel-0fV_upUSaTs-unsplas.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/jalo-hotel-0fV_upUSaTs-unsplas.jpg"
+    },
+    {
       "Identity": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/khashayar-kouchpeydeh-nJguJaHo5dg-unsplash.jpg",
       "SourceId": "MomonaApi",
       "SourceType": "Discovered",
@@ -832,6 +927,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/khashayar-kouchpeydeh-nJguJaHo5dg-unsplash.jpg"
+    },
+    {
+      "Identity": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/troy-oldham-UWw9OD3pIMo-unsplash.jpg",
+      "SourceId": "MomonaApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/",
+      "BasePath": "_content/MomonaApi",
+      "RelativePath": "images/troy-oldham-UWw9OD3pIMo-unsplash.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/troy-oldham-UWw9OD3pIMo-unsplash.jpg"
     }
   ]
 }
