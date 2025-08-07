@@ -193,6 +193,90 @@
       "PackagePath": "staticwebassets/images/khashayar-kouchpeydeh-nJguJaHo5dg-unsplash.jpg"
     },
     {
+      "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/seededImages/Apple Juice.jpg",
+      "PackagePath": "staticwebassets/images/seededImages/Apple Juice.jpg"
+    },
+    {
+      "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/seededImages/Birsin .jpeg",
+      "PackagePath": "staticwebassets/images/seededImages/Birsin .jpeg"
+    },
+    {
+      "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/seededImages/Cappuccino-exc.jpg",
+      "PackagePath": "staticwebassets/images/seededImages/Cappuccino-exc.jpg"
+    },
+    {
+      "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/seededImages/EasyBaklava-BLOG1.jpg",
+      "PackagePath": "staticwebassets/images/seededImages/EasyBaklava-BLOG1.jpg"
+    },
+    {
+      "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/seededImages/Espresso.png",
+      "PackagePath": "staticwebassets/images/seededImages/Espresso.png"
+    },
+    {
+      "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/seededImages/Ethiopian Sparkling Water (Ambo).jpeg",
+      "PackagePath": "staticwebassets/images/seededImages/Ethiopian Sparkling Water (Ambo).jpeg"
+    },
+    {
+      "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/seededImages/GreenBeansCabbage.jpeg",
+      "PackagePath": "staticwebassets/images/seededImages/GreenBeansCabbage.jpeg"
+    },
+    {
+      "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/seededImages/Injerito.jpeg",
+      "PackagePath": "staticwebassets/images/seededImages/Injerito.jpeg"
+    },
+    {
+      "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/seededImages/Kitfo.jpeg",
+      "PackagePath": "staticwebassets/images/seededImages/Kitfo.jpeg"
+    },
+    {
+      "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/seededImages/Samosa.jpeg",
+      "PackagePath": "staticwebassets/images/seededImages/Samosa.jpeg"
+    },
+    {
+      "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/seededImages/Shiro.jpeg",
+      "PackagePath": "staticwebassets/images/seededImages/Shiro.jpeg"
+    },
+    {
+      "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/seededImages/Sparkling Mineral Water.jpeg",
+      "PackagePath": "staticwebassets/images/seededImages/Sparkling Mineral Water.jpeg"
+    },
+    {
+      "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/seededImages/TibsiwithRice.jpeg",
+      "PackagePath": "staticwebassets/images/seededImages/TibsiwithRice.jpeg"
+    },
+    {
+      "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/seededImages/VegetarianCombo.jpeg",
+      "PackagePath": "staticwebassets/images/seededImages/VegetarianCombo.jpeg"
+    },
+    {
+      "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/seededImages/VegetarianDishes.jpeg",
+      "PackagePath": "staticwebassets/images/seededImages/VegetarianDishes.jpeg"
+    },
+    {
+      "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/seededImages/ZiggniAndDorho .jpeg",
+      "PackagePath": "staticwebassets/images/seededImages/ZiggniAndDorho .jpeg"
+    },
+    {
+      "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/seededImages/Zigini.jpeg",
+      "PackagePath": "staticwebassets/images/seededImages/Zigini.jpeg"
+    },
+    {
+      "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/seededImages/coke-de-mexico.png",
+      "PackagePath": "staticwebassets/images/seededImages/coke-de-mexico.png"
+    },
+    {
+      "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/seededImages/easy-chocolate-mousse-cake-featured.jpg",
+      "PackagePath": "staticwebassets/images/seededImages/easy-chocolate-mousse-cake-featured.jpg"
+    },
+    {
+      "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/seededImages/glass-of-mango-juice-and-fruits_10777862.png",
+      "PackagePath": "staticwebassets/images/seededImages/glass-of-mango-juice-and-fruits_10777862.png"
+    },
+    {
+      "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/seededImages/mixed-berry-smoothie-08.jpg",
+      "PackagePath": "staticwebassets/images/seededImages/mixed-berry-smoothie-08.jpg"
+    },
+    {
       "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/troy-oldham-UWw9OD3pIMo-unsplash.jpg",
       "PackagePath": "staticwebassets/images/troy-oldham-UWw9OD3pIMo-unsplash.jpg"
     },
