@@ -1,120 +1,74 @@
+---
 
-  # Momona-Klubb – Fullstack Project (React + ASP.NET Core + SQLite)
+# Momona Klubb – Full Stack Application
 
-  A practical IT project where the frontend and backend are connected via a local SQLite database. The application supports menu display, user registration, admin login, and interactive game queue management.
+## Overview
 
-  ## Technologies Used
-
-  * **Frontend:** React (TypeScript)
-  * **Backend:** ASP.NET Core Web API
-  * **Database:** SQLite
-  * **Auth:** JWT (JSON Web Tokens) + password hashing
-  * **Tools:** Visual Studio Code, SQLite CLI, Git
-
-  ---
-
-  ## Project Structure
-
-  ```text
-  Momona-Klubb/
-  ├── backend/
-  │   ├── Controllers/
-  │   ├── Model/
-  │   ├── Services/          (JWT, Auth logic)
-  │   ├── DAL/AppDbContext.cs
-  │   ├── Program.cs
-  │   └── menu.db            (SQLite database)
-  └── frontend/
-      ├── src/pages/
-      │   ├── Menu.tsx
-      │   ├── User.tsx
-      │   ├── Admin.tsx
-      │   └── Games.tsx
-      ├── src/components/    (forms, cards, etc.)
-      └── App.tsx            (Routing)
-
-
-## Functionality
-
-### ✅ Menu Management
-
-* `GET /api/menuitems` – Returns list of menu items
-* `POST /api/menuitems` – Add new item (admin only)
-* `PUT /api/menuitems/{id}` – Update item (admin only)
-* `DELETE /api/menuitems/{id}` – Delete item (admin only)
-* Frontend `/menu` page displays menu dynamically
-
-
-### ✅ Admin Authentication
-
-* Admin login with email + password (JWT-based)
-* Password is hashed and stored securely
-* Protected routes require JWT token
-* Admin token stored in browser (localStorage)
-
-### ✅ Game Queue System
-
-* `/api/games` endpoint for all games (pool, foosball, cards)
-* **Users** can
-
-  * View current players per game
-  * Join a queue with name and timestamp
-* **Admins** can
-
-  * View and manage all queues
-  * Remove users from any queue
-* Frontend `/games` page handles full interaction
+Momona Klubb is a full-stack web application developed for a community club.
+It enables customers to browse the menu, check game/table availability, join waiting queues, view upcoming events, and follow sports match updates.
+Administrators can manage all these sections through a secure login system.
 
 ---
 
-## Frontend–Backend Connection
+## Features
 
-* Backend runs at: `http://localhost:5272`
-* Frontend runs at: `http://localhost:3000`
-* CORS is configured to allow secure communication
+### Public
+
+* View menu items with images, descriptions, and prices.
+* Check availability of games such as pool tables, foosball, and card games.
+* Join a waiting queue for games.
+* Browse upcoming events.
+* View upcoming sports matches.
+
+### Admin
+
+* **Menu Management**: Create, update, hide/show, and delete menu items.
+* **Game Management**: Update availability, manage queues, and assign players.
+* **Event Management**: Add, edit, hide/show, and delete events.
+* **Sports Management**: Add, edit, and delete sports matches.
+* **Image Upload**: Upload images for menu items and events.
+* **Authentication**: JWT-based login with role protection.
 
 ---
 
-## SQLite Database
+## Technology Stack
 
-* The database (`menu.db`) is created using `EnsureCreated()` on startup
-* Tables: `MenuItems`, `Users`, `GameQueues`, `Admins`
-* Data is persisted locally
+* **Backend**: ASP.NET Core Web API (C#)
+* **Database**: SQLite (`momona.db`)
+* **Frontend**: React (TypeScript) with styled-components
+* **Authentication**: JWT Bearer Tokens
+* **External API**: TheSportsDB for sports data
+* **ORM**: Entity Framework Core
 
-To open the DB manually:
+---
 
-```bash
-sqlite3 menu.db
-.mode column
-.headers on
-SELECT * FROM MenuItems;
+## Project Structure
+
+```
+backend/
+ ├── Program.cs                  # Application configuration and middleware
+ ├── Controllers/
+ │    ├── AdminController.cs     # Admin authentication
+ │    ├── MenuItemsController.cs # Menu item CRUD operations
+ │    ├── UploadController.cs    # Image upload handling
+ │    ├── GameStatusController.cs# Game availability and queue management
+ │    ├── SportsController.cs    # Sports matches and logo proxy
+ ├── DAL/
+ │    ├── AppDbContext.cs        # EF Core DbContext and seed data
+ ├── Model/                      # Data models
+ ├── momona.db                   # SQLite database
+frontend/
+ ├── src/
+ │    ├── App.tsx                # Routing setup
+ │    ├── pages/                 # Pages for menu, events, games, etc.
+ │    ├── components/            # UI components
 ```
 
 ---
 
-## What Works
+## Installation and Setup
 
-* [x] Dynamic menu loading from backend
-* [x] Admin-only menu editing (CRUD)
-* [x] JWT-based login and token storage
-* [x] User registration form
-* [x] Real-time queue tracking and updates
-* [x] Admin management of game queues
-* [x] SQLite database persistence
-* [x] CORS and secure API interaction
-* [x] Input validation + error handling
-
----
-
-## How to Run the Application
-
-### Prerequisites
-
-* .NET SDK installed
-* Node.js installed
-* SQLite CLI (optional for DB viewing)
-
-### Step 1 – Start the Backend
+### Backend
 
 ```bash
 cd backend
@@ -123,7 +77,13 @@ dotnet build
 dotnet run
 ```
 
-### Step 2 – Start the Frontend
+Runs on:
+
+```
+https://localhost:7272
+```
+
+### Frontend
 
 ```bash
 cd frontend
@@ -131,29 +91,68 @@ npm install
 npm start
 ```
 
-The app runs at: [http://localhost:3000](http://localhost:3000)
+Runs on:
+
+```
+http://localhost:3000
+```
 
 ---
 
-## Next Steps / Improvements
+## Admin Login
 
-* [ ] Add timer or limit per game session
-* [ ] Add notifications or alerts (e.g., “You’re next!”)
-* [ ] Improve mobile responsiveness
-* [ ] Add analytics/dashboard for admin
-* [ ] Implement logout and token expiration
-* [ ] Multi-language support (e.g., EN/NO)
+Seeded admin accounts from `AppDbContext.cs`:
+
+**Super Admin**
+
+* Email: `super@momona.no`
+* Password: `SuperSecret123!`
+
+**Manager**
+
+* Email: `manager@momona.no`
+* Password: `ManagerSecret456!`
 
 ---
 
-## Key Learnings
+## API Endpoints (Main)
 
-* Full-stack integration using ASP.NET Core + React
-* Secure authentication using JWT and password hashing
-* RESTful API design and consumption in frontend
-* Database schema design in SQLite
-* State management and conditional UI rendering
-* Game logic and queue management across users/admins
+| Method | Endpoint                    | Auth | Description                      |
+| ------ | --------------------------- | ---- | -------------------------------- |
+| POST   | `/api/admin/login`          | No   | Login for admin (returns JWT)    |
+| GET    | `/api/menuitems`            | No   | Get visible menu items           |
+| POST   | `/api/menuitems`            | Yes  | Create menu item                 |
+| PUT    | `/api/menuitems/{id}`       | Yes  | Update menu item                 |
+| DELETE | `/api/menuitems/{id}`       | Yes  | Delete menu item                 |
+| GET    | `/api/gamestatus`           | No   | Get game availability and queues |
+| PUT    | `/api/gamestatus/{id}`      | Yes  | Update game availability         |
+| POST   | `/api/gamestatus/{id}/join` | No   | Join game queue                  |
+| POST   | `/api/upload/image`         | Yes  | Upload image file                |
+| GET    | `/api/sports`               | No   | Get sports matches               |
+| POST   | `/api/sports`               | Yes  | Add sports match                 |
+
+**Auth**: Requires Bearer token with `Admin` role.
+
+---
+
+## Images
+
+* Stored in `wwwroot/images` on the backend
+* Accessible via URL, e.g.:
 
 ```
+http://localhost:5272/images/filename.jpg
 ```
+
+---
+
+## Notes
+
+* CORS is configured to allow the frontend (`http://localhost:3000`) to access the API.
+* Database is created and seeded automatically on first run (`EnsureCreated()` in `Program.cs`).
+* Swagger UI is available in development mode at:
+
+```
+https://localhost:7272/swagger
+```
+
