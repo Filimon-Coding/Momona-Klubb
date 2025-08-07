@@ -197,8 +197,8 @@
       "PackagePath": "staticwebassets/images/seededImages/Apple Juice.jpg"
     },
     {
-      "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/seededImages/Birsin .jpeg",
-      "PackagePath": "staticwebassets/images/seededImages/Birsin .jpeg"
+      "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/seededImages/Birsin.jpeg",
+      "PackagePath": "staticwebassets/images/seededImages/Birsin.jpeg"
     },
     {
       "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/seededImages/Cappuccino-exc.jpg",
@@ -235,6 +235,10 @@
     {
       "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/seededImages/Shiro.jpeg",
       "PackagePath": "staticwebassets/images/seededImages/Shiro.jpeg"
+    },
+    {
+      "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/seededImages/SodaCanMix.jpg",
+      "PackagePath": "staticwebassets/images/seededImages/SodaCanMix.jpg"
     },
     {
       "Id": "/home/neov/Documents/MinCodingLinuxV/Prosjekter/4thSemester/PraktiskITProsjektDATA3710/Momona-Klubb/backend/MomonaApi/wwwroot/images/seededImages/Sparkling Mineral Water.jpeg",
