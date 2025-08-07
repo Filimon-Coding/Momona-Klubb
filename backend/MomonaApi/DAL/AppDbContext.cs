@@ -31,7 +31,7 @@ namespace MomonaApi.DAL
                 new GameStatus { Id = 3, GameType = "Cards", AvailableCount = 1 }
             );
 
-            /* Event seeds (optional – remove if you don’t want a default row) */
+            /* Event seeds */
             modelBuilder.Entity<Event>().HasData(
                 new Event
                 {
