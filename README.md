@@ -9,7 +9,7 @@ It enables customers to browse the menu, check game/table availability, join wai
 Administrators can manage all these sections through a secure login system.
 
 ![Home Page](frontend/src/components/images/Home.png)
-![Menu Page](images/Menu.png)
+
 
 
 ---
