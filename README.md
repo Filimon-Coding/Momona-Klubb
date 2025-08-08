@@ -8,6 +8,10 @@ Momona Klubb is a full-stack web application developed for a community club.
 It enables customers to browse the menu, check game/table availability, join waiting queues, view upcoming events, and follow sports match updates.
 Administrators can manage all these sections through a secure login system.
 
+![Home Page](images/Home.png)
+![Menu Page](images/Menu.png)
+
+
 ---
 
 ## Features

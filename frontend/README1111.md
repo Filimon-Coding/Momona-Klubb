@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 
-![Home Page](images/)
+![Home Page](images/Screen)
 ![Menu Page](images/menu.png)
 
 
