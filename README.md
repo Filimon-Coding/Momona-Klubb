@@ -48,11 +48,13 @@ Administrators can manage all these sections through a secure login system.
 
 ## Demo Videos
 
-    * **Frontend**: Demonstration: [Watch on YouTube](https://youtu.be/P8YCI1FWMHU?si=FC5-ETbN50IAnJ8F)
+* **Frontend**: Demonstration: [Watch on YouTube](https://youtu.be/P8YCI1FWMHU?si=FC5-ETbN50IAnJ8F)
 
-    * **Backend/API**: Demonstration: [Watch on YouTube](https://youtu.be/P8YCI1FWMHU?si=FC5-ETbN50IAnJ8F)
+* **Backend/API**: Demonstration: [Watch on YouTube](https://youtu.be/P8YCI1FWMHU?si=FC5-ETbN50IAnJ8F)
     
-    * **Admin side**: Demonstration: [Watch on YouTube](https://youtu.be/-38Ocgb2u58?si=o9JHzBSPnx72olKa)
+* **Admin side**: Demonstration: [Watch on YouTube](https://youtu.be/-38Ocgb2u58?si=o9JHzBSPnx72olKa)
+
+
 
 ---    
 
