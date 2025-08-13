@@ -1,6 +1,6 @@
 # ===== Netlify build config (Momona Klubb) =====
 [build]
-  base    = "."                 # repo root -> frontend
+  base    = "/"                 # repo root -> frontend
   publish = "build"                    # relative to base
   command = "npm ci && npm run build"
   # Skip build if nothing changed under /frontend
