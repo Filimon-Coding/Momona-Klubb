@@ -1,0 +1,48 @@
+# ===== Netlify build config =====
+[build]
+  base    = "frontend"          # where Netlify runs commands
+  publish = "build"             # what to deploy (relative to base)
+  command = "npm ci && npm run build"
+
+# Environment vars available during build
+[build.environment]
+  NODE_VERSION = "18"
+  # Set this once your API is public (e.g., on Render) and redeploy:
+  # REACT_APP_API_URL = "https://<your-backend>.onrender.com/api"
+
+# Skip builds if nothing changed in /frontend (saves minutes)
+# If the command exits 0, Netlify skips the build.
+# This line says: “skip if no changes under frontend/ since last commit”
+ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- frontend"
+
+# ===== SPA routing (React Router) =====
+# Send all routes to index.html so refresh/deep links work.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# ===== (Optional) Proxy API through Netlify =====
+# If you prefer calling /api from the frontend without CORS,
+# uncomment and set your backend URL. Then in React use /api.
+# [[redirects]]
+#   from = "/api/*"
+#   to = "https://<your-backend>.onrender.com/api/:splat"
+#   status = 200
+#   force = true
+
+# ===== (Optional) Security & caching headers =====
+# Strong caching for static assets in /static (CRA output)
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Basic security headers for all pages
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
