@@ -1,13 +1,14 @@
 # ===== Netlify build config (Momona Klubb) =====
 [build]
-  base    = "/"                 # repo root -> frontend
-  publish = "build"                    # relative to base
+  base    = "frontend"                 # run build inside /frontend
+  publish = "build"                    # deploy /frontend/build
   command = "npm ci && npm run build"
-  # Skip build if nothing changed under /frontend
-  ignore  = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- frontend"
+  # TEMP: force builds while we fix config
+  # (remove this line later if you want skip-unchanged)
+  # ignore  = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- frontend"
 
 [build.environment]
-  NODE_VERSION = "20"                  # react-router v7 needs >=20
+  NODE_VERSION = "20"                  # react-router v7 requires >=20
   CI = "false"                         # don't fail build on ESLint warnings
   # REACT_APP_API_URL = "https://<your-backend>.onrender.com/api"
 
