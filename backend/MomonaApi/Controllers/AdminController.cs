@@ -1,6 +1,7 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MomonaApi.Model;
 using MomonaApi.DAL;
+using MomonaApi.Model;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -21,38 +22,35 @@ namespace MomonaApi.Controllers
             _config = config;
         }
 
-
-
         [HttpPost("login")]
-        public IActionResult Login([FromBody] Admin login)
+        [AllowAnonymous]
+        public IActionResult Login([FromBody] LoginDto login)
         {
+            if (login is null || string.IsNullOrWhiteSpace(login.Email) || string.IsNullOrWhiteSpace(login.Password))
+                return BadRequest("Missing credentials.");
+
             var admin = _context.Admins.FirstOrDefault(a => a.Email == login.Email);
-            if (admin == null)
-            {
-                return Unauthorized("Invalid email.");
-            }
+            if (admin == null) return Unauthorized("Invalid credentials.");
 
-            if (!PasswordHelper.VerifyPassword(login.PasswordHash, admin.PasswordHash))
-            {
-                return Unauthorized("Incorrect password.");
-            }
+            // plain password vs. lagret hash
+            if (!PasswordHelper.VerifyPassword(login.Password, admin.PasswordHash))
+                return Unauthorized("Invalid credentials.");
 
-            /// Generate JWT and return with firstName
             var token = GenerateJwtToken(admin);
             return Ok(new { token, firstName = admin.FirstName });
-
         }
 
         private string GenerateJwtToken(Admin admin)
         {
+            var secret = _config["JWT:Secret"] ?? throw new InvalidOperationException("JWT:Secret is not configured.");
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
             var claims = new[]
             {
                 new Claim(ClaimTypes.Name, admin.Email),
                 new Claim(ClaimTypes.Role, "Admin")
             };
-
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("dsfkjdkjfDSDDsxkcxnc zmxSADASDajhk!!%#ldfjdfjkjdfSdfsQQWeqwexczcQQQAsdpn!#"));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
                 claims: claims,
