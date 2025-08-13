@@ -23,5 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 #ignore file 
-gitScript.sh
+Script.sh
 # local env files 
