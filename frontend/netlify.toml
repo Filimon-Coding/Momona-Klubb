@@ -3,28 +3,46 @@
   base    = "frontend"                 # run build inside /frontend
   publish = "build"                    # deploy /frontend/build
   command = "npm ci && npm run build"
-  # TEMP: force builds while we fix config
-  # (remove this line later if you want skip-unchanged)
-  # ignore  = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- frontend"
 
 [build.environment]
-  NODE_VERSION = "20"                  # react-router v7 requires >=20
-  CI = "false"                         # don't fail build on ESLint warnings
-  # REACT_APP_API_URL = "https://<your-backend>.onrender.com/api"
+  NODE_VERSION = "20"
+  CI = "false"
 
-# SPA routing (React Router)
+# --- Environments ------------------------------------------------------------
+# In production and deploy previews, build the app to call /api,
+# and let the redirect below forward /api/* to Render.
+[context.production.environment]
+  REACT_APP_API_URL = "/api"
+
+[context.deploy-preview.environment]
+  REACT_APP_API_URL = "/api"
+
+# (Optional) For local Netlify CLI `netlify dev`, you can uncomment this:
+# [dev]
+#   framework = "#custom"
+#   command = "npm start"                # CRA dev server
+#   targetPort = 3000
+
+# --- API proxy to Render (no CORS on Netlify site) ---------------------------
+[[redirects]]
+  from = "/api/*"
+  to   = "https://momona-klubb.onrender.com/api/:splat"
+  status = 200
+  force = true
+
+# --- SPA routing (React Router) ----------------------------------------------
 [[redirects]]
   from = "/*"
   to   = "/index.html"
   status = 200
 
-# Caching for CRA assets
+# --- Caching for CRA assets --------------------------------------------------
 [[headers]]
   for = "/static/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Basic security headers
+# --- Basic security headers --------------------------------------------------
 [[headers]]
   for = "/*"
   [headers.values]

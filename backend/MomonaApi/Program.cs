@@ -7,6 +7,7 @@ using MomonaApi.DAL;
 using MomonaApi.Interfaces;
 using MomonaApi.Model;
 using MomonaApi.Services;
+using Microsoft.AspNetCore.HttpOverrides;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -108,28 +109,36 @@ using (var scope = app.Services.CreateScope())
 
 
     // --- SEED: Admins ---
-if (!db.Admins.Any())
-{
-    db.Admins.AddRange(
-        new Admin {
-            Id = 1, Email = "super@momona.no", FirstName = "Super", LastName = "Admin",
-            PasswordHash = PasswordHelper.HashPassword("SuperSecret123!")
-        },
-        new Admin {
-            Id = 2, Email = "manager@momona.no", FirstName = "Site", LastName = "Manager",
-            PasswordHash = PasswordHelper.HashPassword("ManagerSecret456!")
-        }
-    );
-    db.SaveChanges();
-}
+    if (!db.Admins.Any())
+    {
+        db.Admins.AddRange(
+            new Admin
+            {
+                Id = 1,
+                Email = "super@momona.no",
+                FirstName = "Super",
+                LastName = "Admin",
+                PasswordHash = PasswordHelper.HashPassword("SuperSecret123!")
+            },
+            new Admin
+            {
+                Id = 2,
+                Email = "manager@momona.no",
+                FirstName = "Site",
+                LastName = "Manager",
+                PasswordHash = PasswordHelper.HashPassword("ManagerSecret456!")
+            }
+        );
+        db.SaveChanges();
+    }
 
     // --- SEED: GameStatuses ---
     if (!db.GameStatuses.Any())
     {
         db.GameStatuses.AddRange(
-            new GameStatus { Id = 1, GameType = "Pool",     AvailableCount = 1 },
+            new GameStatus { Id = 1, GameType = "Pool", AvailableCount = 1 },
             new GameStatus { Id = 2, GameType = "Foosball", AvailableCount = 1 },
-            new GameStatus { Id = 3, GameType = "Cards",    AvailableCount = 1 }
+            new GameStatus { Id = 3, GameType = "Cards", AvailableCount = 1 }
         );
         db.SaveChanges();
     }
@@ -138,7 +147,8 @@ if (!db.Admins.Any())
     if (!db.Events.Any())
     {
         db.Events.AddRange(
-            new Event {
+            new Event
+            {
                 Id = 1,
                 Title = "Clasic Music - Yemane Baria ",
                 StartsAt = DateTime.SpecifyKind(new DateTime(2025, 8, 17, 18, 0, 0), DateTimeKind.Utc),
@@ -146,7 +156,8 @@ if (!db.Admins.Any())
                 ImageUrl = "/images/1a31f790-e047-4f92-847e-1e45b5295898.jpeg",
                 IsHidden = false
             },
-            new Event {
+            new Event
+            {
                 Id = 2,
                 Title = "Tour de France Live : Biniam Girmay",
                 StartsAt = DateTime.SpecifyKind(new DateTime(2025, 8, 20, 20, 0, 0), DateTimeKind.Utc),
@@ -154,7 +165,8 @@ if (!db.Admins.Any())
                 ImageUrl = "/images/troy-oldham-UWw9OD3pIMo-unsplash.jpg",
                 IsHidden = false
             },
-            new Event {
+            new Event
+            {
                 Id = 3,
                 Title = "Traditional Coffee Ceremony",
                 StartsAt = DateTime.SpecifyKind(new DateTime(2025, 8, 25, 16, 0, 0), DateTimeKind.Utc),
@@ -199,6 +211,12 @@ if (!db.Admins.Any())
     }
 }
 
+
+// Optional: if you're behind a proxy (Render), forward proto/host
+app.UseForwardedHeaders(new ForwardedHeadersOptions {
+    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+});
+
 // ------------------------------
 // 5) Endepunkter
 // ------------------------------
@@ -220,6 +238,11 @@ app.MapGet("/weatherforecast", () =>
 })
 .WithName("GetWeatherForecast")
 .WithOpenApi();
+
+
+// Redirect the root to Swagger
+app.MapGet("/", () => Results.Redirect("/swagger"));
+
 
 app.Run();
 
