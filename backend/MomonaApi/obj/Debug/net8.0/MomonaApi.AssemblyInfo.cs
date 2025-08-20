@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MomonaApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0ec2a1893cc746038b45f23a5f4d330b57a9594b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be7bc4c6984a9184303ea34645705f7a575bded2")]
 [assembly: System.Reflection.AssemblyProductAttribute("MomonaApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MomonaApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
