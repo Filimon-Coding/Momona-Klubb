@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.233e912c.css",
+    "main.js": "/static/js/main.585dcc58.js",
+    "static/js/453.670e15c7.chunk.js": "/static/js/453.670e15c7.chunk.js",
+    "static/media/andras-joo-oQ80Jli44kI-unsplash.jpg": "/static/media/andras-joo-oQ80Jli44kI-unsplash.43009791dea7d90eba70.jpg",
+    "static/media/8994ba68-3a20-4a1e-87a0-2c67e8aa1ebe.png": "/static/media/8994ba68-3a20-4a1e-87a0-2c67e8aa1ebe.006bb776af959d321924.png",
+    "static/media/eugene-nelmin-fIij-cL9XTA-unsplash.jpg": "/static/media/eugene-nelmin-fIij-cL9XTA-unsplash.267f6b74c72ded8167ff.jpg",
+    "static/media/logo.png": "/static/media/logo.91b7bf41b90c4f33b8ea.png",
+    "static/media/cedar-creation-0OgV2lVj0Ko-unsplash.jpg": "/static/media/cedar-creation-0OgV2lVj0Ko-unsplash.f7b257338fcedb554960.jpg",
+    "static/media/jalo-hotel-0fV_upUSaTs-unsplash.jpg": "/static/media/jalo-hotel-0fV_upUSaTs-unsplash.7e5c4ac2bab3ce419955.jpg",
+    "static/media/alex-padurariu-mqyMjCTWJyQ-unsplash.jpg": "/static/media/alex-padurariu-mqyMjCTWJyQ-unsplash.09c0218635abe3cc5f5b.jpg",
+    "static/media/Coffee_ceremony_of_Ethiopia_and_Eritrea_4.jpg": "/static/media/Coffee_ceremony_of_Ethiopia_and_Eritrea_4.e9401608860f30f5771f.jpg",
+    "index.html": "/index.html",
+    "main.233e912c.css.map": "/static/css/main.233e912c.css.map",
+    "main.585dcc58.js.map": "/static/js/main.585dcc58.js.map",
+    "453.670e15c7.chunk.js.map": "/static/js/453.670e15c7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.233e912c.css",
+    "static/js/main.585dcc58.js"
+  ]
+}

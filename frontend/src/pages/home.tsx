@@ -90,12 +90,12 @@ const FloatingButton = styled.a<{
   backdrop-filter: blur(7px);
   transition: 0.3s ease;
 
-  /* commented out animation for now 
+  // commented out animation for now 
 
   animation: ${p => p.animationName} 10s ease-in-out infinite;
   animation-delay: ${p => p.animationDelay};
 
-  */
+  
   &:hover {
     background: white;
     color: black;
